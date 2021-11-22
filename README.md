@@ -1,1 +1,1 @@
-# smartide模版
+# smartide new模版

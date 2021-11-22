@@ -4,15 +4,17 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-node
+    service-name: smartide-template-node-express
     webide-port: 6800
     ide-type: vscode
     volumes: 
       git-config: true
       ssh-key: true
-      
+    command:
+      - npm install
+      - npm start
   services:
-    smartide-template-node:
+    smartide-template-node-express:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-opvscode:latest
       restart: always
       environment:

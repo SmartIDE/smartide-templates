@@ -1,0 +1,28 @@
+version: smartide/v0.3
+orchestrator:
+  type: docker-compose
+  version: 3
+  ide-type: vscode  #vscode/theia
+workspace:
+  dev-container:
+    service-name: smartide-go
+    webide-port: 6800
+    ide-type: vscode  #vscode/theia
+    volumes: 
+        git-config: true
+        ssh-key: true
+    command: 
+        - go env -w GOPROXY=https://goproxy.cn,direct  # 容器启动后，到项目目录下运行的命令 TODO: 待实现
+    
+  services:
+    smartide-go:
+      container_name: smartide-go
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-go-opvscode:latest
+      restart: always
+      environment:
+        POSTGRES_HOST_AUTH_METHOD: trust
+        ROOT_PASSWORD: root123
+      volumes:
+        - .:/home/project
+      espose:
+        - 3000

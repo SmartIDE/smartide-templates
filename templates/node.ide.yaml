@@ -13,7 +13,7 @@ workspace:
       
   services:
     smartide-template-node:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-opvscode:latest
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-slim:latest
       restart: always
       environment:
         POSTGRES_HOST_AUTH_METHOD: trust

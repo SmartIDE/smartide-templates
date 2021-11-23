@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template--golang
+    service-name: smartide-template-php
     webide-port: 6800
     ide-type: vscode
     volumes:
@@ -16,7 +16,7 @@ workspace:
       - apache2ctl -k start
       - cd / && ./start-xdebug.sh 9003 openvs
   services:
-    smartide-template--golang:
+    smartide-template-php:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-opvscode-php:latest
       restart: always
       environment:

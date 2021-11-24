@@ -20,7 +20,6 @@ workspace:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-opvscode-php:latest
       restart: always
       environment:
-        POSTGRES_HOST_AUTH_METHOD: trust
         ROOT_PASSWORD: root123
       volumes:
         - .:/home/project

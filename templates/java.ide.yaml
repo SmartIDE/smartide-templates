@@ -15,7 +15,6 @@ workspace:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-opvscode:latest
       restart: always
       environment:
-        POSTGRES_HOST_AUTH_METHOD: trust
         ROOT_PASSWORD: root123
       volumes:
         - .:/home/project

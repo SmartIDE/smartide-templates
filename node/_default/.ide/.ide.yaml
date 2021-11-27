@@ -5,7 +5,9 @@ orchestrator:
 workspace:
   dev-container:
     service-name: smartide-template-node
-    webide-port: 6800
+    ports:
+      webide: 6800
+      ssh: 6822
     ide-type: vscode
     volumes: 
       git-config: true

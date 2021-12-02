@@ -2,7 +2,8 @@
   {
     "typename": "node",
     "subtype": [
-      "express"
+      "express",
+      "base"
     ],
     "command":[
     ]

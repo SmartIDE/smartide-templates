@@ -8,8 +8,8 @@
   海外主页: <a href="https://smartide.dev/en/" target="_blank">https://smartide.dev</a> 
 </p>
 <p align="center">
-  <a href="https://gitee.com/smartide" target="_blank"><img src="https://img.shields.io/badge/git-Gitee-red" /></a> 
-  <a href="https://github.com/smartide" target="_blank"><img src="https://img.shields.io/badge/git-GitHub-blue" /></a> 
+  <a href="https://gitee.com/smartide" target="_blank"><img src="https://img.shields.io/badge/git-Gitee-red?logo=gitee" /></a> 
+  <a href="https://github.com/smartide" target="_blank"><img src="https://img.shields.io/badge/git-GitHub-blue?logo=github" /></a> 
 </p>
 <p align="center">
   <img src="https://dev.azure.com/leansoftx/smartide/_apis/build/status/smartide-codesign-ci?branchName=main" />

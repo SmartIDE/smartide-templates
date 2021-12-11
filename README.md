@@ -33,9 +33,10 @@
 
 ```shell
 smartide new
-v0.1.8.1557
+
 SmartIDE工作区模板
-TemplateType TypeName
+
+SdkName      TypeName
 node         _default
 node         express
 node         base
@@ -58,15 +59,15 @@ mkdir new-app
 cd new-app
 
 ## 使用特性sdk的空模板创建工作区
-smartide new <TemplateType>
+smartide new <sdkName>
 
 ## 使用特定sdk的特定模板创建工作区
-smartide new <TemplateType> -t <TypeName>
+smartide new <sdkName> -t <TypeName>
 ```
 
 ## 示例
 
-请参考 [Node.Js快速启动手册]() 了解如何使用 smartide new 命令快速创建一个基于 node express 框架的应用程序开发工作区。
+请参考 [Node.Js快速启动手册](https://smartide.cn/zh/docs/quickstart/new-node/) 了解如何使用 smartide new 命令快速创建一个基于 node express 框架的应用程序开发工作区。
 
 ## 如何添加你自己的模板
 
@@ -76,7 +77,7 @@ SmartIDE模板库为开源免费代码，欢迎任何人通过提交 Issue 或�
 
 - 模板库采用2级目录结构
   - 第一级代表sdk类型，比如: golang, java, node, php, python
-  - 第二级为具体template的文件夹，第二级目录的名称可以随意执行，但是不能有空格和特殊字符
+  - 第二级为具体template的文件夹，第二级目录的名称可以随意指定，不能有空格和特殊字符，只能使用字符名称，暂时不支持中文目录名称
 - template文件夹结构
   - 一个template文件夹其实就是一个可工作的代码库
   - 为了能够适配 SmartIDE，这里需要添加一个 .ide 目录并在其中创建1个文件
@@ -123,21 +124,35 @@ workspace:
 
 1. 按照 [安装手册](https://smartide.cn/zh/docs/install/) 安装 SmartIDE 命令行工具 
 2. 执行 smartide new 让 SmartIDE 完成当前模板的下载
-3. 进入 ~/.ide/template 目录，执行 git checkout -b <分支名称> 创建一个新分支
+3. 进入 ~/.ide/template 目录，执行 git checkout -b {分支名称} 创建一个新分支
+
+```shell
+git checkout -b {分支名称}
+```
 4. 在所创建的分支中按照以上模板结构创建自己的模板文件夹
 5. 更新 template.json 以便 SmartIDE 命令行工具可以识别你的模板
-6. 使用 smartide new <TemplateType> -t <你的模板目录名称> 测试模板是否可以正常工作
+6. 使用 smartide new {SdkName} -t {TypeName} 测试模板是否可以正常工作
+
+```shell
+smartide new {SdkName} -t {TypeName}
+```
 
 ### 提交PR
 
 **提示**: 为了方便中国大陆地区的开发者提交贡献，我们提供了Gitee的代码库地址，此代码库与GitHub上的代码库自动保持同步。但是为了避免双向同步造成的代码冲突，所有提交到Gitee的PR内容会优先合并到GitHub主库，再同步回到Gitee。
 
-1. 通过SmartIDE在 Github 或者 Gitee 的代码库创建你的 fork
-2. 在你本地的 ~/.ide/template 目录中运行以下命令添加指向自己的 fork 的gitUrl
+1. 通过SmartIDE在 Github 或者 Gitee 的代码库创建你的fork
+2. 在你本地的 ~/.ide/template 目录中运行以下命令添加指向自己的fork库的GitURL
+
 ```shell
 git remote add my-smartide <你的Fork库的GitURL>
 ```
+
 3. 推送你本地用于测试的分支到你的fork库，并通过你的fork库提交PR给SmartIDE主库
+
+```shell
+git push -u my-smartide {分支名称}
+```
 
 开发者完成以上操作以后，SmartIDE产品团队会审核并测试你的代码，如果符合我们的质量标准，我们会接受PR并合并进入SmartIDE的模板库，这样全球的开发者就都可以使用你的新模板了。
 

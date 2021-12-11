@@ -25,16 +25,16 @@ This repository contains templates for SmartIDE, you can use [smartide new] comm
 
 **Note**: SmartIDE is a cross-platform tool, all comamnds listed in this document works on Windows & MacOS, Linux support is coming soon.
 
-## How the templates works?
+## How the template works?
 
-When you run [smartide new] command, SmartIDE will clone this repo into ~/.ide/ of current user, and read the template list from template.json.
+When you run [smartide new] command, SmartIDE will clone this repo into *~/.ide/* of current user, and read the template list from *template.json*.
 
 Then you can run the following command to list all available templates.
 
 ```shell
 smartide new
 
-SmartIDE工作区模板
+SmartIDE Workspace Templates
 
 SdkName      TypeName
 node         _default
@@ -44,7 +44,7 @@ java         _default
 golang       _default
 php          _default
 
-选项：
+Options:
   -d, --debug         Enable debug mode, show more log messages
   -h, --help          Print the current help message
   -t, --type string   Specify template TypeName

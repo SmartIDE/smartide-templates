@@ -15,7 +15,7 @@ workspace:
       
   services:
     smartide-template-node:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-slim:latest
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node:latest
       restart: always
       environment:
         ROOT_PASSWORD: root123

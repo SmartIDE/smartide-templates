@@ -20,18 +20,23 @@ smartide new hugo -t docsy
 # 以下两行命令需要在当前模板初始化完成后从.ide.yaml中删除，因为只有第一次需要执行这2个动作
 git init
 git submodule add https://gitee.com/smartide/docsy.git themes/docsy
+
 # 初始化git子模块，将子模块中的代码clone到当前仓库中以便程序引用
 # 第一次clone子模块需要较长时间，请耐心等待，如果在clone过程中出现失败的情况，请从新运行smartide new指令
-- git submodule update --init --recursive
+git submodule update --init --recursive
+
 # 设置npm使用国内淘宝镜像站，加速npm包获取动作
-- npm config set registry https://registry.npmmirror.com
+npm config set registry https://registry.npmmirror.com
+
 # 获取npm包
-- npm install
+npm install
+
 # 将当前代码库中的文件及提到到git仓库中
 # 以下脚本需要在模块初始化完成后从.ide.yaml中移除
-- git add . && git commit -m "SmartIDE init"
+git add . && git commit -m "SmartIDE init"
+
 # 以调试模式启动hugo服务器，默认监听1313端口
-- hugo server --bind 0.0.0.0 --disableFastRender --forceSyncStatic --buildDrafts --buildFuture 
+ hugo server --bind 0.0.0.0 --disableFastRender --forceSyncStatic --buildDrafts --buildFuture 
 ```
 
 如果在模块初始化过程中出现问题，最简单的修复方式就是从新运行 smartide new 指令，你可以使用ctrl-c停止当前smartide指令运行，然后运行

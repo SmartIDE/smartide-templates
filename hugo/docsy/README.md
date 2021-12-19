@@ -1,122 +1,55 @@
-# Docsy Example
+# SmartIDE Docsy Example
 
-[Docsy][] is a [Hugo theme][] for technical documentation sites, providing easy
-site navigation, structure, and more. This **Docsy Example Project** uses the
-Docsy theme and provides a skeleton documentation structure for you to use. You
-can clone/copy this project and edit it with your own content, or use it as an
-example.
+Be a Smart Developer 开发从未如此简单
 
-In this project, the Docsy theme is included as a Git submodule:
+本代码库为SmartIDE的项目模板库，开发者可以使用 smartide new 命令一键创建项目脚手架，其脚手架代码的内容来自本库。
 
-```bash
-$ git submodule
-...<hash>... themes/docsy (remotes/origin/HEAD)
+**说明**: SmartIDE提供跨平台能力，如无特殊说明，以下所列的所有功能默认均可以在Windows和MacOS上执行；对于Linux本地运行模式的支持很快也会发布。
+
+## 基本使用说明
+
+```shell
+## 一键启动命令
+smartide new hugo -t docsy
 ```
 
-You can find detailed theme instructions in the [Docsy user guide][].
+等待SmartIDE吊起vscode WebIDE后，会在Web Terminal中自动完成以下操作，以下指令在 .ide.yaml 中已经配置好，无需手工运行。
 
-This Docsy Example Project is hosted on [Netlify][] at [example.docsy.dev][].
-You can view deploy logs from the [deploy section of the project's Netlify
-dashboard][deploys], or this [alternate dashboard][].
-
-This is not an officially supported Google product. This project is currently maintained.
-
-## Using the Docsy Example Project as a template
-
-A simple way to get started is to use this project as a template, which gives you a site project that is set up and ready to use. To do this: 
-
-1. Click **Use this template**.
-
-2. Select a name for your new project and click **Create repository from template**.
-
-3. Make your own local working copy of your new repo using git clone, replacing https://github.com/my/example.git with your repo’s web URL:
-
-```bash
-git clone --recurse-submodules --depth 1 https://github.com/my/example.git
+```shell
+# 将当前目录初始化成git仓库并使用Git Submodule方式引入Docsy皮肤
+# 以下两行命令需要在当前模板初始化完成后从.ide.yaml中删除，因为只有第一次需要执行这2个动作
+git init
+git submodule add https://gitee.com/smartide/docsy.git themes/docsy
+# 初始化git子模块，将子模块中的代码clone到当前仓库中以便程序引用
+# 第一次clone子模块需要较长时间，请耐心等待，如果在clone过程中出现失败的情况，请从新运行smartide new指令
+- git submodule update --init --recursive
+# 设置npm使用国内淘宝镜像站，加速npm包获取动作
+- npm config set registry https://registry.npmmirror.com
+# 获取npm包
+- npm install
+# 将当前代码库中的文件及提到到git仓库中
+# 以下脚本需要在模块初始化完成后从.ide.yaml中移除
+- git add . && git commit -m "SmartIDE init"
+# 以调试模式启动hugo服务器，默认监听1313端口
+- hugo server --bind 0.0.0.0 --disableFastRender --forceSyncStatic --buildDrafts --buildFuture 
 ```
 
-You can now edit your own versions of the site’s source files.
+如果在模块初始化过程中出现问题，最简单的修复方式就是从新运行 smartide new 指令，你可以使用ctrl-c停止当前smartide指令运行，然后运行
 
-If you want to do SCSS edits and want to publish these, you need to install `PostCSS`
-
-```bash
-npm install
+```shell
+## 删除当前环境，需要在当前目录中运行
+smartide remove
+## 重置当前smartide环境
+smartide reset -ya
 ```
 
-## Running the website locally
+## 引用说明
 
-Building and running the site locally requires a recent `extended` version of [Hugo](https://gohugo.io).
-You can find out more about how to install Hugo for your environment in our
-[Getting started](https://www.docsy.dev/docs/getting-started/#prerequisites-and-installation) guide.
+本模板源自 [Google Docsy](https://github.com/google/docsy/) 模板，SmartIDE对其进行了本地化处理和扩展。
 
-Once you've made your working copy of the site repo, from the repo root folder, run:
 
-```
-hugo server
-```
+## 开源协议 & 版权说明
 
-## Running a container locally
+本代码库采用 GPL 3.0 开源协议，具体可以参考 [LICENSE](LICENSE) 文件了解更多细节。
 
-You can run docsy-example inside a [Docker](https://docs.docker.com/)
-container, the container runs with a volume bound to the `docsy-example`
-folder. This approach doesn't require you to install any dependencies other
-than [Docker Desktop](https://www.docker.com/products/docker-desktop) on
-Windows and Mac, and [Docker Compose](https://docs.docker.com/compose/install/)
-on Linux.
-
-1. Build the docker image 
-
-   ```bash
-   docker-compose build
-   ```
-
-1. Run the built image
-
-   ```bash
-   docker-compose up
-   ```
-
-   > NOTE: You can run both commands at once with `docker-compose up --build`.
-
-1. Verify that the service is working. 
-
-   Open your web browser and type `http://localhost:1313` in your navigation bar,
-   This opens a local instance of the docsy-example homepage. You can now make
-   changes to the docsy example and those changes will immediately show up in your
-   browser after you save.
-
-### Cleanup
-
-To stop Docker Compose, on your terminal window, press **Ctrl + C**. 
-
-To remove the produced images run:
-
-```console
-docker-compose rm
-```
-For more information see the [Docker Compose
-documentation](https://docs.docker.com/compose/gettingstarted/).
-
-## Troubleshooting
-
-As you run the website locally, you may run into the following error:
-
-```
-➜ hugo server
-
-INFO 2021/01/21 21:07:55 Using config file: 
-Building sites … INFO 2021/01/21 21:07:55 syncing static files to /
-Built in 288 ms
-Error: Error building site: TOCSS: failed to transform "scss/main.scss" (text/x-scss): resource "scss/scss/main.scss_9fadf33d895a46083cdd64396b57ef68" not found in file cache
-```
-
-This error occurs if you have not installed the extended version of Hugo.
-See our [user guide](https://www.docsy.dev/docs/getting-started/) for instructions on how to install Hugo.
-
-[alternate dashboard]: https://app.netlify.com/sites/goldydocs/deploys
-[deploys]: https://app.netlify.com/sites/docsy-example/deploys
-[Docsy user guide]: https://docsy.dev/docs
-[Docsy]: https://github.com/google/docsy
-[example.docsy.dev]: https://example.docsy.dev
-[Hugo theme]: https://gohugo.io/themes/installing-and-using-themes/
-[Netlify]: https://netlify.com
+本代码库属于 SmartIDE 产品的一部分，[英捷创软科技(北京)有限公司(简称:LEANSOFT)](https://leansoftx.com)拥有对于 SmartIDE 产品以及其所有相关代码的版权和最终解释权。

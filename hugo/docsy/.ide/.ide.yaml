@@ -14,13 +14,13 @@ workspace:
       git-config: true
       ssh-key: true
     command:
-      - git init
-      - git submodule add https://gitee.com/smartide/docsy.git themes/docsy
+      # 初始化完成后请删除以下脚本，git init && git submodule只需要执行一次
+      - git init && git submodule add https://gitee.com/smartide/docsy.git themes/docsy
       - git submodule update --init --recursive
       - npm config set registry https://registry.npmmirror.com
       - npm install
-      - git add . 
-      - git commit -m "SmartIDE init"
+      # 初始化完成后请删除以下2行脚本，后续请通过手工方式提交代码
+      - git add . && git commit -m "SmartIDE init"
       - hugo server --bind 0.0.0.0 --disableFastRender --forceSyncStatic --buildDrafts --buildFuture 
       
   services:

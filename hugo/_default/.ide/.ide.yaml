@@ -1,0 +1,33 @@
+version: smartide/v0.3
+orchestrator:
+  type: docker-compose
+  version: 3
+workspace:
+  dev-container:
+    service-name: smartide-hugo-dev
+    ports:
+      webide: 6800
+      ssh: 6822
+      hugo-site: 1313
+    ide-type: vscode
+    volumes: 
+      git-config: true
+      ssh-key: true
+      
+  services:
+    smartide-hugo-dev:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-hugo:latest
+      restart: always
+      environment:
+        ROOT_PASSWORD: root123
+      volumes:
+        - .:/home/project
+      expose:
+        - 1313
+      ports:
+        - 1313:1313
+      networks:
+        - smartide-network  
+  networks:
+    smartide-network:
+      external: true

@@ -32,6 +32,7 @@
   {
     "typename": "hugo",
     "subtype": [
+      "docsy"
     ],
     "command":[
     ]

@@ -14,7 +14,10 @@ workspace:
       git-config: true
       ssh-key: true
     command:
+      - git init
+      - git submodule add https://gitee.com/smartide/docsy.git themes/docsy
       - git submodule update --init --recursive
+      - npm config set registry https://registry.npmmirror.com
       - npm install
       - hugo server --bind 0.0.0.0 --disableFastRender --forceSyncStatic --buildDrafts --buildFuture 
       

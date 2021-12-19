@@ -19,6 +19,7 @@ workspace:
       - git submodule update --init --recursive
       - npm config set registry https://registry.npmmirror.com
       - npm install
+      - git commit -m "SmartIDE init"
       - hugo server --bind 0.0.0.0 --disableFastRender --forceSyncStatic --buildDrafts --buildFuture 
       
   services:

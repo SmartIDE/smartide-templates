@@ -8,7 +8,8 @@ workspace:
     ports:
       webide: 6800
       ssh: 6822
-      hugo-site: 1313
+      hugo-dev-site: 1313
+      nginx-prod-site: 8080
     ide-type: vscode
     volumes: 
       git-config: true
@@ -52,7 +53,7 @@ workspace:
         - 8080
       networks:
         - smartide-network  
-        
+
   networks:
     smartide-network:
       external: true

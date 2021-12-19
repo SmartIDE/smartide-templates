@@ -28,5 +28,12 @@
     ],
     "command":[
     ]
+  },
+  {
+    "typename": "hugo",
+    "subtype": [
+    ],
+    "command":[
+    ]
   }
 ]

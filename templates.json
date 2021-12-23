@@ -36,5 +36,13 @@
     ],
     "command":[
     ]
+  },
+  {
+    "typename": "game",
+    "subtype": [
+      "tank"
+    ],
+    "command":[
+    ]
   }
 ]

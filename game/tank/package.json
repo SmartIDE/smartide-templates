@@ -1,0 +1,16 @@
+{
+  "name": "battle-city-ai",
+  "version": "1.0.0",
+  "description": "Calculator",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JulesWang/BattleCity.AI"
+  },
+  "scripts": {
+    "start": "http-server -p 8080 -a 0.0.0.0"
+  },
+  "dependencies": {
+    "http-server": "^14.0.0"
+  },
+  "author": "juleswang"
+}

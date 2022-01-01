@@ -21,6 +21,7 @@ workspace:
       restart: always
       environment:
         TZ: Asia/Shanghai
+        ROOT_PASSWORD: root123
       volumes:
         - .:/home/project/smartide-java-template
         - $HOME/.m2/repository:/root/.m2/repository

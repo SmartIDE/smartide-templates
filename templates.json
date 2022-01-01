@@ -11,6 +11,7 @@
   {
     "typename": "java",
     "subtype": [
+      "springboot-idea"
     ],
     "command":[
     ]

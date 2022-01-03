@@ -9,7 +9,7 @@ workspace:
     ports:
       webide-port: 6800
       ssh: 6822
-      springboot-application: 8100
+      springboot-application: 8080
     ide-type: jb-projector
     volumes:
       git-config: true

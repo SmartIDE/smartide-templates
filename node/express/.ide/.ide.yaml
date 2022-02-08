@@ -8,26 +8,27 @@ workspace:
     ports:
       webide: 6800
       ssh: 6822
+      application: 3001
     ide-type: vscode
     volumes: 
       git-config: true
-      ssh-key: true
+      ssh-key: true      
     command:
       - npm config set registry https://registry.npmmirror.com
       - npm install
       - npm start
   services:
     smartide-template-node-express:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base:latest
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-vscode:all-version
       restart: always
       environment:
-        ROOT_PASSWORD: root123
+        LOCAL_USER_PASSWORD: root123
       volumes:
         - .:/home/project
-      expose:
-        - 3000
       ports:
         - 3001:3001
+        - 6822:22
+        - 6800:3000
       networks:
         - smartide-network  
   networks:

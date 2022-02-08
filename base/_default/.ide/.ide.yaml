@@ -16,7 +16,7 @@ workspace:
       
   services:
     smartide-template-node:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2:all-version
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2:1729
       restart: always
       environment:
         LOCAL_USER_PASSWORD: root123
@@ -24,8 +24,8 @@ workspace:
         - .:/home/project
       ports:
         - 3001:3001
-        - 6822:22
         - 6800:3000
+        - 6822:22
       networks:
         - smartide-network  
   networks:

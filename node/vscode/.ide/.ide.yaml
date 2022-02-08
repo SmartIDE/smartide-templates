@@ -4,28 +4,28 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-base
+    service-name: smartide-template-node
     ports:
       webide: 6800
       ssh: 6822
+      application: 3001
     ide-type: vscode
     volumes: 
       git-config: true
       ssh-key: true
+      
   services:
-    smartide-template-base:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base
+    smartide-template-node:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-vscode:all-version
       restart: always
       environment:
-        LOCAL_USER_ID: id -u $USER
-        LOCAL_USER_GID: id -g $USER
-        LOCAL_PASSWORD: root123
+        LOCAL_USER_PASSWORD: root123
       volumes:
         - .:/home/project
-      expose:
-        - 3000
       ports:
         - 3001:3001
+        - 6822:22
+        - 6800:3000
       networks:
         - smartide-network  
   networks:

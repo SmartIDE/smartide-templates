@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-node
+    service-name: smartide-template-node-vscode
     ports:
       webide: 6800
       ssh: 6822
@@ -15,7 +15,7 @@ workspace:
       ssh-key: true
       
   services:
-    smartide-template-node:
+    smartide-template-node-vscode:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-vscode:all-version
       restart: always
       environment:

@@ -1,0 +1,36 @@
+version: smartide/v0.3 ## TODO
+orchestrator:
+  type: docker-compose
+  version: 3
+workspace:
+  dev-container:
+    service-name: smartide-template-golang-vscode
+    ports:
+      webide: 6800
+      ssh: 6822
+      application: 3001
+    ide-type: vscode
+    volumes: 
+        git-config: true
+        ssh-key: true
+    command: 
+        - go env -w GOPROXY=https://goproxy.cn,direct
+    
+  services:
+    smartide-template-golang-vscode:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-golang-v2-vscode:1749
+      restart: always
+      environment:
+        ROOT_PASSWORD: root123
+        LOCAL_USER_PASSWORD: root123
+      ports:
+        - 3001:3001
+        - 6822:22
+        - 6800:3000
+      volumes:
+        - .:/home/project
+      networks:
+        - smartide-network  
+  networks:
+    smartide-network:
+      external: true      

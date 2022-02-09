@@ -4,12 +4,12 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-golang-vscode
+    service-name: smartide-template-golang-goland
     ports:
       webide: 6800
       ssh: 6822
       application: 3001
-    ide-type: vscode
+    ide-type: jb-projector
     volumes: 
         git-config: true
         ssh-key: true
@@ -17,7 +17,7 @@ workspace:
         - go env -w GOPROXY=https://goproxy.cn,direct
     
   services:
-    smartide-template-golang-vscode:
+    smartide-template-golang-goland:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-golang-v2-jetbrain-goland:2020.3.5-2059
       restart: always
       environment:

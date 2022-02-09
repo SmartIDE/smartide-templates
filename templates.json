@@ -26,6 +26,9 @@
   {
     "typename": "golang",
     "subtype": [
+      "goland",
+      "vscode"
+
     ],
     "command":[
     ]

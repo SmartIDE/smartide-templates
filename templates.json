@@ -18,7 +18,9 @@
   {
     "typename": "java",
     "subtype": [
-      "springboot-idea"
+      "springboot-idea",
+      "vscode",
+      "idea"
     ],
     "command":[
     ]

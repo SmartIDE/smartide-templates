@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-java
+    service-name: smartide-template-java-vscode
     ports:
       webide: 6800
       ssh: 6822
@@ -14,9 +14,8 @@ workspace:
         git-config: true
         ssh-key: true
   services:
-    smartide-template-java:
-      #image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode:2070
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2:2069
+    smartide-template-java-vscode:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode:2070
       restart: always
       environment:
         ROOT_PASSWORD: root123

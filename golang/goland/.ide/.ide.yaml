@@ -18,7 +18,7 @@ workspace:
     
   services:
     smartide-template-golang-goland:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-golang-v2-jetbrain-goland:2020.3.5-2059
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-golang-v2-jetbrain-goland:2020.3.5-2064
       restart: always
       environment:
         ROOT_PASSWORD: root123

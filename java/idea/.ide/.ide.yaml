@@ -15,7 +15,7 @@ workspace:
         ssh-key: true
   services:
     smartide-template-java-idea:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-idea:2070
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-jetbrains-idea:2078
       restart: always
       environment:
         ROOT_PASSWORD: root123

@@ -1,4 +1,4 @@
-version: smartide/v0.2
+version: smartide/v0.1
 orchestrator:
   type: docker-compose
   version: 3
@@ -8,41 +8,26 @@ workspace:
     ports:
       webide: 6800
       ssh: 6822
+      application: 3001
     ide-type: vscode
-    volumes:
-      git-config: true
-      ssh-key: true
-    command:
-      - git config core.filemode false
-      - chmod -R 777 /home/project
-      - apache2ctl -k start
-      - cd / && ./start-xdebug.sh 9003 openvs
+    volumes: 
+        git-config: true
+        ssh-key: true
   services:
     smartide-template-php:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-opvscode-php:latest
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-php-v2:2099
       restart: always
       environment:
         ROOT_PASSWORD: root123
+        LOCAL_USER_PASSWORD: root123
+      ports:
+        - 3001:3001
+        - 6822:22
+        - 6800:3000
       volumes:
         - .:/home/project
-      expose:
-        - 3000
-      ports:
-        - 8080:80
       networks:
-        - smartide-network
-    itop-db:
-      image: mysql:5.7
-      environment:
-        MYSQL_ROOT_PASSWORD: leansoft
-      restart: always
-      volumes:
-        - ./mysql/conf/my.cnf:/etc/my.cnf
-        - ../mysql-db:/var/lib/mysql
-      ports:
-        - 3306:3306
-      networks:
-        - smartide-network
+        - smartide-network  
   networks:
     smartide-network:
-      external: true
+      external: true      

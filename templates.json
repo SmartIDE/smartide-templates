@@ -10,7 +10,8 @@
     "typename": "node",
     "subtype": [
       "express",
-      "vscode"
+      "vscode",
+      "webstorm"
     ],
     "command":[
     ]

@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-python
+    service-name: smartide-template-node-vscode
     ports:
       webide: 6800
       ssh: 6822
@@ -15,8 +15,8 @@ workspace:
       ssh-key: true
       
   services:
-    smartide-template-python:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2:all-version ## node image include python sdk
+    smartide-template-node-vscode:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-php-v2-jetbrains-vscode:2021.3.2-latest
       restart: always
       environment:
         LOCAL_USER_PASSWORD: root123

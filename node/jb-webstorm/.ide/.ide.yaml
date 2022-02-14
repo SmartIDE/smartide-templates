@@ -16,7 +16,7 @@ workspace:
       
   services:
     smartide-template-node-webstorm:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-jetbrain-webstorm:2020.3.3-2043
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-jetbrains-webstorm:2020.3.3-2043
       restart: always
       environment:
 		    ROOT_PASSWORD: root123

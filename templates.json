@@ -37,8 +37,20 @@
     ]
   },
   {
+    "typename": "python",
+    "subtype": [
+      "pycharm",
+      "vscode"
+
+    ],
+    "command":[
+    ]
+  },
+  {
     "typename": "php",
     "subtype": [
+      "phpstorm",
+      "vscode"
     ],
     "command":[
     ]

@@ -16,7 +16,7 @@ workspace:
       
   services:
     smartide-template-node-vscode:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-python-v2-jetbrains-vscode:all-version
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-python-v2-vscode:all-version
       restart: always
       environment:
         LOCAL_USER_PASSWORD: root123

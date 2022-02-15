@@ -22,6 +22,7 @@ workspace:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-php-v2-vscode:2108
       restart: always
       environment:
+		    ROOT_PASSWORD: root123
         LOCAL_USER_PASSWORD: root123
       volumes:
         - .:/home/project

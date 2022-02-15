@@ -16,7 +16,7 @@ workspace:
       
   services:
     smartide-template-python-vscode:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-python-v2-jetbrains-pycharm:2021.2.3-2096
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-python-v2-vscode:2021.2.3-2105
       restart: always
       environment:
         ROOT_PASSWORD: root123

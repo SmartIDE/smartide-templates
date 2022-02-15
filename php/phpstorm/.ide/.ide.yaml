@@ -16,7 +16,7 @@ workspace:
       
   services:
     smartide-template-node-webstorm:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-php-v2-jetbrains-phpstorm:2021.3.2-latest
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-php-v2-jetbrains-phpstorm:2111
       restart: always
       environment:
 		    ROOT_PASSWORD: root123

@@ -15,7 +15,7 @@ workspace:
         ssh-key: true
   services:
     smartide-template-php:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-php-v2:2099
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-php-v2:2107
       restart: always
       environment:
         ROOT_PASSWORD: root123

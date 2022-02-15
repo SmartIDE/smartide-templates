@@ -26,7 +26,7 @@ workspace:
       ports:
         - 3001:3001
         - 6822:22
-        - 6800:8887
+        - 6800:3000
       networks:
         - smartide-network  
   networks:

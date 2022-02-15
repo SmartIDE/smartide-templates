@@ -9,7 +9,7 @@ workspace:
       webide: 6800
       ssh: 6822
       application: 3001
-    ide-type: jb-projector
+    ide-type: vscode
     volumes: 
       git-config: true
       ssh-key: true

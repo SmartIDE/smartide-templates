@@ -14,7 +14,7 @@ workspace:
       git-config: true
       ssh-key: true
     command:
-      - apache2ctl -k start
+      - sudo apache2ctl -k start
     #  - cd / && ./start-xdebug.sh 9003 openvs
       
   services:
@@ -30,7 +30,7 @@ workspace:
         - 3001:3001
         - 6822:22
         - 6800:3000
-        - 8080:80
+        - 8080:80 #apache2 web server
       networks:
         - smartide-network  
   networks:

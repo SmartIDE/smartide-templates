@@ -4,18 +4,18 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-dotnet
+    service-name: smartide-template-cpp-clion
     ports:
       webide: 6800
       ssh: 6822
       application: 3001
-    ide-type: vscode
+    ide-type: jb-projector
     volumes: 
         git-config: true
         ssh-key: true
   services:
-    smartide-template-dotnet:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-dotnet-v2:2141
+    smartide-template-cpp-clion:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-cpp-v2-jetbrains-clion:2021.3.3-2142
       restart: always
       environment:
         ROOT_PASSWORD: root123
@@ -23,7 +23,7 @@ workspace:
       ports:
         - 3001:3001
         - 6822:22
-        - 6800:3000
+        - 6800:8887
       volumes:
         - .:/home/project
       networks:

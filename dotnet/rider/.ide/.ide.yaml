@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-java-idea
+    service-name: smartide-template-dotnet-rider
     ports:
       webide: 6800
       ssh: 6822
@@ -14,9 +14,8 @@ workspace:
         git-config: true
         ssh-key: true
   services:
-    smartide-template-java-idea:
+    smartide-template-dotnet-rider:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-dotnet-v2-jetbrains-rider:2021.3.3-2142
-      #image: smartide/smartide-java-v2-jetbrains-idea:2021.2.3-2081
       restart: always
       environment:
         ROOT_PASSWORD: root123

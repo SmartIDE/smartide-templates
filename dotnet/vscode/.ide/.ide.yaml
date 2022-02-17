@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-java-vscode
+    service-name: smartide-template-dotnet-vscode
     ports:
       webide: 6800
       ssh: 6822
@@ -14,7 +14,7 @@ workspace:
         git-config: true
         ssh-key: true
   services:
-    smartide-template-java-vscode:
+    smartide-template-dotnet-vscode:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-dotnet-v2-vscode:2143
       restart: always
       environment:

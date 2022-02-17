@@ -26,6 +26,24 @@
     "command":[
     ]
   },
+ {
+    "typename": "dotnet",
+    "subtype": [
+      "vscode",
+      "rider"
+    ],
+    "command":[
+    ]
+  },
+  {
+    "typename": "cpp",
+    "subtype": [
+      "vscode",
+      "clion"
+    ],
+    "command":[
+    ]
+  },
   {
     "typename": "golang",
     "subtype": [

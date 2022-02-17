@@ -1,0 +1,33 @@
+version: smartide/v0.1
+orchestrator:
+  type: docker-compose
+  version: 3
+workspace:
+  dev-container:
+    service-name: smartide-template-java-vscode
+    ports:
+      webide: 6800
+      ssh: 6822
+      application: 3001
+    ide-type: vscode
+    volumes: 
+        git-config: true
+        ssh-key: true
+  services:
+    smartide-template-java-vscode:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-dotnet-v2-vscode:2143
+      restart: always
+      environment:
+        ROOT_PASSWORD: root123
+        LOCAL_USER_PASSWORD: root123
+      ports:
+        - 3001:3001
+        - 6822:22
+        - 6800:3000
+      volumes:
+        - .:/home/project
+      networks:
+        - smartide-network  
+  networks:
+    smartide-network:
+      external: true      

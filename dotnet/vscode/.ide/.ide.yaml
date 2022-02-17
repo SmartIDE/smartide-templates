@@ -13,6 +13,10 @@ workspace:
     volumes: 
         git-config: true
         ssh-key: true
+    command:
+      - code --install-extension muhammad-sammy.csharp
+    #  - code --install-extension MS-CEINTL.vscode-language-pack-zh-hans
+    #  - dotnet new console
   services:
     smartide-template-dotnet-vscode:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-dotnet-v2-vscode:2143

@@ -15,7 +15,7 @@ workspace:
         ssh-key: true
   services:
     smartide-template-cpp-clion:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-cpp-v2-jetbrains-clion:2021.3.3-2142
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-cpp-v2-jetbrains-clion:2021.3.3-2160
       restart: always
       environment:
         ROOT_PASSWORD: root123

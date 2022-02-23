@@ -15,7 +15,7 @@ workspace:
         ssh-key: true
   services:
     smartide-template-java-idea:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-jetbrains-idea:2081
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-jetbrains-idea:2021.2.3-openjdk-11-jdk-2081
       #image: smartide/smartide-java-v2-jetbrains-idea:2021.2.3-2081
       restart: always
       environment:

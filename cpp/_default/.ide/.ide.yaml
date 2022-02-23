@@ -15,7 +15,7 @@ workspace:
         ssh-key: true
   services:
     smartide-template-cpp:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-cpp-v2:2142
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-cpp-v2:2156
       restart: always
       environment:
         ROOT_PASSWORD: root123

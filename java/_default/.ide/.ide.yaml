@@ -14,9 +14,8 @@ workspace:
         git-config: true
         ssh-key: true
   services:
-    smartide-template-java:
-      #image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode:2070
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2:2069
+    smartide-template-java:     
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2:2098
       restart: always
       environment:
         ROOT_PASSWORD: root123

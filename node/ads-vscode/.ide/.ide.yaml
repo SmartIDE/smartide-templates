@@ -1,0 +1,42 @@
+version: smartide/v0.3
+orchestrator:
+  type: docker-compose
+  version: 3
+workspace:
+  dev-container:
+    service-name: smartide-template-node-vscode
+    ports:
+      webide: 6800
+      ssh: 6822
+      application: 3001
+    ide-type: vscode
+    volumes: 
+      git-config: true
+      ssh-key: true
+    command:
+      - npm install -g yo     
+      - npm install -g @microsoft/generator-azure-devops-extension
+    #  - yo @microsoft/azure-devops-extension
+    #  - npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
+    #  - npm install
+      
+      
+      
+  services:
+    smartide-template-node-vscode:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-vscode:1748
+      restart: always
+      environment:
+        ROOT_PASSWORD: root123
+        LOCAL_USER_PASSWORD: root123
+      volumes:
+        - .:/home/project
+      ports:
+        - 3001:3001
+        - 6822:22
+        - 6800:3000
+      networks:
+        - smartide-network  
+  networks:
+    smartide-network:
+      external: true

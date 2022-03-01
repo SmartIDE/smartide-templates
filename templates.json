@@ -11,7 +11,8 @@
     "subtype": [
       "express",
       "vscode",
-      "webstorm"
+      "webstorm",
+      "ads-vscode"
     ],
     "command":[
     ]

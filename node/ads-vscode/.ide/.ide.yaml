@@ -14,11 +14,19 @@ workspace:
       git-config: true
       ssh-key: true
     command:
+      - npm config set registry https://registry.npmmirror.com
+      - npm config get registry
+      - nvm use 14.17.6 #必须使用此版本的node,否则node-saas不兼容
       - npm install -g yo     
       - npm install -g @microsoft/generator-azure-devops-extension
-    #  - yo @microsoft/azure-devops-extension
-    #  - npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
-    #  - npm install
+      ##- yo @microsoft/azure-devops-extension ## 使用此命令生成扩展示例代码，根据命令行提示顺序分别需要输入四次参数。本模板已经生成，重新执行此命令可以生成新的扩展
+      ##  - npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
+      - npm install ## 代码生成后运行
+      ## start前，搜索3000，把端口改为3001;
+      ## 修改 package.json,在 scripts start:dev 后面添加： --host 0.0.0.0，不设置本机无法通过localhost:3001访问
+      - npm run package:dev ##在终端手工运行此命令,生成ads安装包,将vsix安装至ads，
+      - npm run start:dev ##在终端手工运行此命令，本地可以打开http://localhost:3001
+      ## 打开ads即可看到插件显示效果
       
       
       

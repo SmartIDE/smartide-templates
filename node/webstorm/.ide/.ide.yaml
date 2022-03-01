@@ -13,6 +13,11 @@ workspace:
     volumes: 
       git-config: true
       ssh-key: true
+    command:
+      - npm config get registry
+    #  - npm config set registry https://registry.npmmirror.com
+    #  - npm install
+    #  - npm start
       
   services:
     smartide-template-node-webstorm:

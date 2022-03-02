@@ -21,6 +21,7 @@ workspace:
       - npm install -g @microsoft/generator-azure-devops-extension
       ##- yo @microsoft/azure-devops-extension ## 使用此命令生成扩展示例代码，根据命令行提示顺序分别需要输入四次参数。本模板已经生成，重新执行此命令可以生成新的扩展
       ##  - npm i node-sass --sass_binary_site=https://npm.taobao.org/mirrors/node-sass/
+      - cd SmartideE-ADSExt-Demo
       - npm install ## 代码生成后运行
       ## start前，搜索3000，把端口改为3001;
       ## 修改 package.json,在 scripts start:dev 后面添加： --host 0.0.0.0，不设置本机无法通过localhost:3001访问

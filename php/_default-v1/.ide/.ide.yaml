@@ -1,4 +1,4 @@
-version: smartide/v0.2
+version: smartide/v0.3
 orchestrator:
   type: docker-compose
   version: 3
@@ -6,8 +6,8 @@ workspace:
   dev-container:
     service-name: smartide-template-php
     ports:
-      webide: 6800
-      ssh: 6822
+      tools-webide-port: 6800
+      tools-ssh: 6822
     ide-type: vscode
     volumes:
       git-config: true

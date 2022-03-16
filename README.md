@@ -94,8 +94,8 @@ workspace:
   dev-container:
     service-name: smartide-template-node
     ports:
-      webide: 6800
-      ssh: 6822
+      tools-webide-port: 6800
+      tools-tools-ssh: 6822
     ide-type: vscode
     volumes: 
       git-config: true
@@ -112,6 +112,8 @@ workspace:
       expose:
         - 3000
       ports:
+        - 6822:22
+        - 6800:3000
         - 3001:3001
       networks:
         - smartide-network  

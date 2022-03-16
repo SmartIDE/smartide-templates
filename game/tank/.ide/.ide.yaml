@@ -1,4 +1,4 @@
-version: smartide/v0.2
+version: smartide/v0.3
 orchestrator:
   type: docker-compose
   version: 3
@@ -8,9 +8,9 @@ workspace:
     webide-port: 6800
     
     ports: # 申明端口
-      webide: 6800
-      ssh: 6822
-      battle-city-ai: 8080
+      tools-webide-port: 6800
+      tools-ssh: 6822
+      apps-battle-city-ai: 8080
     
     ide-type: vscode  #vscode/theia
     volumes: 
@@ -34,7 +34,8 @@ workspace:
         - 3000
         - 8080
       ports:
-        - 3001:3001
+        - 6800:3000
+        - 6822:22
         - 8080:8080
       networks:
         - smartide-network

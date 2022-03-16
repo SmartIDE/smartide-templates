@@ -6,9 +6,9 @@ workspace:
   dev-container:
     service-name: smartide-hugo-dev
     ports:
-      webide: 6800
-      ssh: 6822
-      hugo-site: 1313
+      tools-webide-port: 6800
+      tools-ssh: 6822
+      apps-hugo-site: 1313
     ide-type: vscode
     volumes: 
       git-config: true
@@ -25,6 +25,8 @@ workspace:
       expose:
         - 1313
       ports:
+        - 6822:22
+        - 6800:3000
         - 1313:1313
       networks:
         - smartide-network  

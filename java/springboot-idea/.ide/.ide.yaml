@@ -1,15 +1,14 @@
-version: smartide/v0.2
+version: smartide/v0.3
 orchestrator:
   type: docker-compose
   version: 3
 workspace:
   dev-container:
     service-name: smartide-java-template
-    webide-port: 6800
     ports:
-      webide-port: 6800
-      ssh: 6822
-      springboot-application: 8080
+      tools-webide-port: 6800
+      tools-ssh: 6822
+      apps-springboot-application: 8080
     ide-type: jb-projector
     volumes:
       git-config: true
@@ -17,7 +16,7 @@ workspace:
   services:
     smartide-java-template:
       container_name: smartide-java-template
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-jetbrain-idea-c:latest
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-jetbrains-idea:2021.2.3-openjdk-11-jdk-2081
       restart: always
       environment:
         TZ: Asia/Shanghai
@@ -27,6 +26,8 @@ workspace:
       expose:
         - 8080
       ports:
+        - 6822:22
+        - 6800:8887
         - 8080:8080
       networks:
         - boathouse-dev-network

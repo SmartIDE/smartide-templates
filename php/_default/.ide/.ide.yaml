@@ -1,4 +1,4 @@
-version: smartide/v0.1
+version: smartide/v0.3
 orchestrator:
   type: docker-compose
   version: 3
@@ -6,13 +6,12 @@ workspace:
   dev-container:
     service-name: smartide-template-php
     ports:
-      webide: 6800
-      ssh: 6822
-      application: 3001
+      tools-ssh: 6822
+      apps-apache:  8080
     ide-type: vscode
     volumes: 
-        git-config: true
-        ssh-key: true
+      git-config: true
+      ssh-key: true
     command:
       - sudo apache2ctl -k start
     #  - cd / && ./start-xdebug.sh 9003 openvs
@@ -24,9 +23,7 @@ workspace:
         ROOT_PASSWORD: root123
         LOCAL_USER_PASSWORD: root123
       ports:
-        - 3001:3001
-        - 6822:22
-        - 6800:3000
+        - 6822:22     
         - 8080:80 #apache2 web server
       volumes:
         - .:/home/project

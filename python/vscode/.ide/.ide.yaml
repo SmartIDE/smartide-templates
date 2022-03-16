@@ -6,9 +6,9 @@ workspace:
   dev-container:
     service-name: smartide-template-python-vscode
     ports:
-      webide: 6800
-      ssh: 6822
-      application: 3001
+      tools-webide-port: 6800
+      tools-ssh: 6822
+      apps-application: 3001
     ide-type: vscode
     volumes: 
       git-config: true
@@ -24,9 +24,9 @@ workspace:
       volumes:
         - .:/home/project
       ports:
-        - 3001:3001
         - 6822:22
         - 6800:3000
+        - 3001:3001
       networks:
         - smartide-network  
   networks:

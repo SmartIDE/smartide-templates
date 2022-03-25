@@ -11,8 +11,11 @@ workspace:
       apps-application: 3001
     ide-type: vscode
     volumes: 
-        git-config: true
-        ssh-key: true
+      git-config: true
+      ssh-key: true
+    command:
+      - code --install-extension vscjava.vscode-java-pack
+      - code --install-extension pivotal.vscode-boot-dev-pack
   services:
     smartide-template-java-vscode:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode:2192

@@ -12,7 +12,8 @@
       "express",
       "vscode",
       "webstorm",
-      "ads-vscode"
+      "ads-vscode",
+      "opensumi"
     ],
     "command":[
     ]

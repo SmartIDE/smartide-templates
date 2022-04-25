@@ -1,94 +1,161 @@
 [
   {
     "typename": "base",
-    "subtype": [
-    ],
-    "command":[
-    ]
+    "subtype": [],
+    "command": []
   },
   {
     "typename": "node",
     "subtype": [
-      "express",
-      "vscode",
-      "webstorm",
-      "ads-vscode",
-      "opensumi"
+      {
+        "title": "express",
+        "desc": "",
+        "logo": ""
+      },
+      {
+        "title": "vscode",
+        "desc": "",
+        "logo": ""
+      },
+      {
+        "title": "webstorm",
+        "desc": "",
+        "logo": ""
+      },
+      {
+        "title": "ads-vscode",
+        "desc": "",
+        "logo": ""
+      },
+      {
+        "title": "opensumi",
+        "desc": "",
+        "logo": ""
+      }
     ],
-    "command":[
-    ]
+    "command": []
   },
   {
     "typename": "java",
     "subtype": [
-      "springboot-idea",
-      "vscode",
-      "idea"
+      {
+        "title": "springboot-idea",
+        "desc": "",
+        "logo": ""
+      },
+      {
+        "title": "vscode",
+        "desc": "",
+        "logo": ""
+      },
+      {
+        "title": "idea",
+        "desc": "",
+        "logo": ""
+      }
     ],
-    "command":[
-    ]
+    "command": []
   },
- {
+  {
     "typename": "dotnet",
     "subtype": [
-      "vscode",
-      "rider"
+      {
+        "title": "vscode",
+        "desc": "",
+        "logo": ""
+      },
+      {
+        "title": "rider",
+        "desc": "",
+        "logo": ""
+      }
     ],
-    "command":[
-    ]
+    "command": []
   },
   {
     "typename": "cpp",
     "subtype": [
-      "vscode",
-      "clion"
+      {
+        "title": "vscode",
+        "desc": "",
+        "logo": ""
+      },
+      {
+        "title": "clion",
+        "desc": "",
+        "logo": ""
+      }
     ],
-    "command":[
-    ]
+    "command": []
   },
   {
     "typename": "golang",
     "subtype": [
-      "goland",
-      "vscode"
-
+      {
+        "title": "vscode",
+        "desc": "",
+        "logo": ""
+      },
+      {
+        "title": "goland",
+        "desc": "",
+        "logo": ""
+      }
     ],
-    "command":[
-    ]
+    "command": []
   },
   {
     "typename": "python",
     "subtype": [
-      "pycharm",
-      "vscode"
-
+      {
+        "title": "vscode",
+        "desc": "",
+        "logo": ""
+      },
+      {
+        "title": "pycharm",
+        "desc": "",
+        "logo": ""
+      }
     ],
-    "command":[
-    ]
+    "command": []
   },
   {
     "typename": "php",
     "subtype": [
-      "phpstorm",
-      "vscode"
+      {
+        "title": "vscode",
+        "desc": "",
+        "logo": ""
+      },
+      {
+        "title": "phpstorm",
+        "desc": "",
+        "logo": ""
+      }
     ],
-    "command":[
-    ]
+    "command": []
   },
   {
     "typename": "hugo",
     "subtype": [
-      "docsy"
+      {
+        "title": "docsy",
+        "desc": "",
+        "logo": ""
+      }
     ],
-    "command":[
-    ]
+    "command": []
   },
   {
     "typename": "game",
     "subtype": [
-      "tank"
+      {
+        "title": "tank",
+        "desc": "",
+        "logo": ""
+      }
     ],
-    "command":[
-    ]
+    "command": []
   }
 ]

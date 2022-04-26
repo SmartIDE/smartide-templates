@@ -6,7 +6,7 @@ workspace:
   dev-container:
     service-name: smartide-template-dotnet-rider
     ports:
-      tools-webide-port: 6800
+      tools-webide-rider: 6800
       tools-ssh: 6822
       apps-application: 3001
     ide-type: jb-projector

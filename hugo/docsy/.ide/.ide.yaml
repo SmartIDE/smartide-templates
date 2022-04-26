@@ -6,7 +6,7 @@ workspace:
   dev-container:
     service-name: smartide-hugo-dev
     ports:
-      tools-webide-port: 6800
+      tools-webide-vscode: 6800
       tools-ssh: 6822
       apps-hugo-dev-site: 1313
       apps-nginx-prod-site: 8080

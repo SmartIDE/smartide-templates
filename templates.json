@@ -9,32 +9,32 @@
     "subtype": [
       {
         "name": "express",
-        "title": "express",
-        "desc": "",
+        "title": "基于Express的node环境",
+        "desc": "使用基于express框架的node环境创建IDE",
         "logo": ""
       },
       {
         "name": "vscode",
-        "title": "vscode",
-        "desc": "",
+        "title": "基于VSCode的node环境",
+        "desc": "使用node环境创建VSCode IDE",
         "logo": ""
       },
       {
         "name": "webstorm",
-        "title": "webstorm",
-        "desc": "",
+        "title": "基于webstorm的node环境",
+        "desc": "使用node环境创建Webstorm IDE",
         "logo": ""
       },
       {
         "name": "ads-vscode",
-        "title": "ads-vscode",
-        "desc": "",
+        "title": "基于ads-vscode的node环境",
+        "desc": "使用基于ads开发组件的node环境创建VSCode IDE",
         "logo": ""
       },
       {
         "name": "opensumi",
-        "title": "opensumi",
-        "desc": "",
+        "title": "基于opensumi的node环境",
+        "desc": "使用node环境创建OpenSumi IDE",
         "logo": ""
       }
     ],
@@ -45,20 +45,20 @@
     "subtype": [
       {
         "name": "springboot-idea",
-        "title": "springboot-idea",
-        "desc": "",
+        "title": "基于springboot的java环境",
+        "desc": "使用基于springboot框架的java环境创建IDEA IDE",
         "logo": ""
       },
       {
         "name": "vscode",
-        "title": "vscode",
-        "desc": "",
+        "title": "基于VSCode的java环境",
+        "desc": "使用java环境创建VSCode IDE",
         "logo": ""
       },
       {
         "name": "idea",
-        "title": "idea",
-        "desc": "",
+        "title": "基于IDEA的java环境",
+        "desc": "使用java环境创建IDEA IDE",
         "logo": ""
       }
     ],
@@ -69,14 +69,14 @@
     "subtype": [
       {
         "name": "vscode",
-        "title": "vscode",
-        "desc": "",
+        "title": "基于VSCode的dotnet环境",
+        "desc": "使用dotnet环境创建VSCode IDE",
         "logo": ""
       },
       {
         "name": "rider",
-        "title": "rider",
-        "desc": "",
+        "title": "基于IDEA的dotnet环境",
+        "desc": "使用dotnet环境创建Rider IDE",
         "logo": ""
       }
     ],
@@ -86,15 +86,15 @@
     "typename": "cpp",
     "subtype": [
       {
-        "name":"vscode",
-        "title": "vscode",
-        "desc": "",
+        "name": "vscode",
+        "title": "基于VSCode的cpp环境",
+        "desc": "使用cpp环境创建VSCode IDE",
         "logo": ""
       },
       {
         "name": "clion",
-        "title": "clion",
-        "desc": "",
+        "title": "基于Clion的dotnet环境",
+        "desc": "使用cppt环境创建Clion IDE",
         "logo": ""
       }
     ],
@@ -105,14 +105,14 @@
     "subtype": [
       {
         "name": "vscode",
-        "title": "vscode",
-        "desc": "",
+        "title": "基于VSCode的golang环境",
+        "desc": "使用golang环境创建VSCode IDE",
         "logo": ""
       },
       {
         "name": "goland",
-        "title": "goland",
-        "desc": "",
+        "title": "基于GoLand的golang环境",
+        "desc": "使用golang环境创建GoLand IDE",
         "logo": ""
       }
     ],
@@ -123,14 +123,14 @@
     "subtype": [
       {
         "name": "vscode",
-        "title": "vscode",
-        "desc": "",
+        "title": "基于VSCode的python环境",
+        "desc": "使用python环境创建VSCode IDE",
         "logo": ""
       },
       {
         "name": "pycharm",
-        "title": "pycharm",
-        "desc": "",
+        "title": "基于PyCharm的python环境",
+        "desc": "使用python环境创建PyCharm IDE",
         "logo": ""
       }
     ],
@@ -141,14 +141,14 @@
     "subtype": [
       {
         "name": "vscode",
-        "title": "vscode",
-        "desc": "",
+        "title": "基于VSCode的php环境",
+        "desc": "使用php环境创建VSCode IDE",
         "logo": ""
       },
       {
         "name": "phpstorm",
-        "title": "phpstorm",
-        "desc": "",
+        "title": "基于PhpStorm的php环境",
+        "desc": "使用php环境创建PhpStorm IDE",
         "logo": ""
       }
     ],
@@ -159,8 +159,8 @@
     "subtype": [
       {
         "name": "docsy",
-        "title": "docsy",
-        "desc": "",
+        "title": "基于docsy的node环境",
+        "desc": "使用基于docsy框架的node环境创建IDE",
         "logo": ""
       }
     ],
@@ -171,8 +171,8 @@
     "subtype": [
       {
         "name": "tank",
-        "title": "tank",
-        "desc": "",
+        "title": "一个基于node环境的坦克大战小游戏",
+        "desc": "创建一个基于nodejs的坦克大战游戏运行环境",
         "logo": ""
       }
     ],

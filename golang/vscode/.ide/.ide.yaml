@@ -6,7 +6,7 @@ workspace:
   dev-container:
     service-name: smartide-template-golang-vscode
     ports:
-      tools-webide-port: 6800
+      tools-webide-vscode: 6800
       tools-ssh: 6822
       apps-application: 3001
     ide-type: vscode

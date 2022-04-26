@@ -8,7 +8,7 @@ workspace:
     webide-port: 6800
     
     ports: # 申明端口
-      tools-webide-port: 6800
+      tools-webide-vscode: 6800
       tools-ssh: 6822
       apps-battle-city-ai: 8080
     

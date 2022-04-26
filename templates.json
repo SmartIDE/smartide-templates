@@ -8,26 +8,31 @@
     "typename": "node",
     "subtype": [
       {
+        "name": "express",
         "title": "express",
         "desc": "",
         "logo": ""
       },
       {
+        "name": "vscode",
         "title": "vscode",
         "desc": "",
         "logo": ""
       },
       {
+        "name": "webstorm",
         "title": "webstorm",
         "desc": "",
         "logo": ""
       },
       {
+        "name": "ads-vscode",
         "title": "ads-vscode",
         "desc": "",
         "logo": ""
       },
       {
+        "name": "opensumi",
         "title": "opensumi",
         "desc": "",
         "logo": ""
@@ -39,16 +44,19 @@
     "typename": "java",
     "subtype": [
       {
+        "name": "springboot-idea",
         "title": "springboot-idea",
         "desc": "",
         "logo": ""
       },
       {
+        "name": "vscode",
         "title": "vscode",
         "desc": "",
         "logo": ""
       },
       {
+        "name": "idea",
         "title": "idea",
         "desc": "",
         "logo": ""
@@ -60,11 +68,13 @@
     "typename": "dotnet",
     "subtype": [
       {
+        "name": "vscode",
         "title": "vscode",
         "desc": "",
         "logo": ""
       },
       {
+        "name": "rider",
         "title": "rider",
         "desc": "",
         "logo": ""
@@ -76,11 +86,13 @@
     "typename": "cpp",
     "subtype": [
       {
+        "name":"vscode",
         "title": "vscode",
         "desc": "",
         "logo": ""
       },
       {
+        "name": "clion",
         "title": "clion",
         "desc": "",
         "logo": ""
@@ -92,11 +104,13 @@
     "typename": "golang",
     "subtype": [
       {
+        "name": "vscode",
         "title": "vscode",
         "desc": "",
         "logo": ""
       },
       {
+        "name": "goland",
         "title": "goland",
         "desc": "",
         "logo": ""
@@ -108,11 +122,13 @@
     "typename": "python",
     "subtype": [
       {
+        "name": "vscode",
         "title": "vscode",
         "desc": "",
         "logo": ""
       },
       {
+        "name": "pycharm",
         "title": "pycharm",
         "desc": "",
         "logo": ""
@@ -124,11 +140,13 @@
     "typename": "php",
     "subtype": [
       {
+        "name": "vscode",
         "title": "vscode",
         "desc": "",
         "logo": ""
       },
       {
+        "name": "phpstorm",
         "title": "phpstorm",
         "desc": "",
         "logo": ""
@@ -140,6 +158,7 @@
     "typename": "hugo",
     "subtype": [
       {
+        "name": "docsy",
         "title": "docsy",
         "desc": "",
         "logo": ""
@@ -151,6 +170,7 @@
     "typename": "game",
     "subtype": [
       {
+        "name": "tank",
         "title": "tank",
         "desc": "",
         "logo": ""

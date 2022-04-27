@@ -53,7 +53,7 @@ workspace:
 
     ruoyi-nacos:
       container_name: ruoyi-nacos
-      image: nacos/nacos-server
+      image: nacos/nacos-server:v2.0.4
       build:
         context: './.ide/nacos'
       environment:

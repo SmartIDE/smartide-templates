@@ -46,8 +46,6 @@ workspace:
         - 3306:3306
       environment:
         MYSQL_ROOT_PASSWORD: password
-      volumes:
-        - './.ide/.data/mysql-data:/var/lib/mysql'
       networks:
         - ruoyi-dev-network
 
@@ -59,7 +57,6 @@ workspace:
       environment:
         MODE: standalone
       volumes:
-        - './.ide/nacos/logs/:/home/nacos/logs'
         - './.ide/nacos/conf/application.properties:/home/nacos/conf/application.properties'
       ports:
         - 8848:8848

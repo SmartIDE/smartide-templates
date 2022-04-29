@@ -50,7 +50,7 @@ workspace:
         MYSQL_USER: root
         MYSQL_ROOT_PASSWORD: password
       volumes:
-        - './sql:/docker-entrypoint-initdb.d'
+        - '~/.ide/template/java/ruoyi-cloud/sql:/docker-entrypoint-initdb.d'
       networks:
         - ruoyi-dev-network
 

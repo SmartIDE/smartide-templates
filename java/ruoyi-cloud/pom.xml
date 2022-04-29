@@ -41,6 +41,7 @@
         <transmittable-thread-local.version>2.12.2</transmittable-thread-local.version>
         <sonar.host.url>http://sonar-sonar:9000</sonar.host.url>
         <sonar.login>e1c1659339af1f52473fb6d20c5609fa97741dc7</sonar.login>
+        <sonar.java.binaries>target/classes</sonar.java.binaries>
     </properties>
 
     <!-- 依赖声明 -->

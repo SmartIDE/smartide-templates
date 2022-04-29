@@ -9,6 +9,8 @@ workspace:
       tools-webide-idea: 6800
       tools-ssh: 6822
       tools-phpmyadmin: 8090
+      tools-nacos: 8848
+      tools-sonar: 9000
       apps-ruoyi-ui: 8000
       apps-ruoyi-admin: 8080
     ide-type: jb-projector

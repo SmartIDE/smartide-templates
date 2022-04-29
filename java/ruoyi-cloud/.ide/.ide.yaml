@@ -47,7 +47,10 @@ workspace:
       ports:
         - 3306:3306
       environment:
+        MYSQL_USER: root
         MYSQL_ROOT_PASSWORD: password
+      volumes:
+        - './sql:/docker-entrypoint-initdb.d'
       networks:
         - ruoyi-dev-network
 

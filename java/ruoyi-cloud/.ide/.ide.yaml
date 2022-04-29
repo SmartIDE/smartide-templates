@@ -58,6 +58,10 @@ workspace:
         MODE: standalone
       volumes:
         - './.ide/nacos/conf/application.properties:/home/nacos/conf/application.properties'
+      expose:
+        - 8848
+        - 9848
+        - 9849
       ports:
         - 8848:8848
         - 9848:9848
@@ -86,6 +90,37 @@ workspace:
         - 6379
       ports:
         - "6379:6379"
+      networks:
+        - ruoyi-dev-network
+        
+    sonar-postgres:
+      image: postgres
+      restart: always
+      container_name: sonarqube_postgres
+      ports:
+        - 5432:5432
+      environment:
+        TZ: Asia/Shanghai
+        POSTGRES_USER: sonar
+        POSTGRES_PASSWORD: sonar
+        POSTGRES_DB: sonar
+      networks:
+        - ruoyi-dev-network
+
+    sonar-sonar:
+      image: sonarqube
+      restart: always
+      container_name: sonarqube
+      depends_on:
+        - sonar-postgres
+      expose:
+        - 9000
+      ports:
+        - 9000:9000
+      environment:
+        SONARQUBE_JDBC_USERNAME: sonar
+        SONARQUBE_JDBC_PASSWORD: sonar
+        SONARQUBE_JDBC_URL: jdbc:postgresql://sonar-postgres:5432/sonar
       networks:
         - ruoyi-dev-network
   networks:

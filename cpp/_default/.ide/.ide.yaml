@@ -7,7 +7,7 @@ workspace:
     service-name: smartide-template-cpp
     ports:
       tools-ssh: 6822
-    ide-type: vscode
+    ide-type: sdk-only
     volumes: 
       git-config: true
       ssh-key: true

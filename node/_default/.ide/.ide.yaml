@@ -6,7 +6,6 @@ workspace:
   dev-container:
     service-name: smartide-template-node
     ports:
-      tools-webide-port: 6800
       tools-ssh: 6822
       apps-application: 3001
     ide-type: sdk-only
@@ -25,7 +24,6 @@ workspace:
         - .:/home/project
       ports:
         - 6822:22
-        - 6800:3000
         - 3001:3001
       networks:
         - smartide-network  

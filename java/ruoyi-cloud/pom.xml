@@ -39,6 +39,9 @@
         <poi.version>4.1.2</poi.version>
         <commons-collections.version>3.2.2</commons-collections.version>
         <transmittable-thread-local.version>2.12.2</transmittable-thread-local.version>
+        <sonar.host.url>http://sonar-sonar:9000</sonar.host.url>
+        <sonar.login>e1c1659339af1f52473fb6d20c5609fa97741dc7</sonar.login>
+        <sonar.java.binaries>target/classes</sonar.java.binaries>
     </properties>
 
     <!-- 依赖声明 -->
@@ -269,6 +272,11 @@
                     <target>${java.version}</target>
                     <encoding>${project.build.sourceEncoding}</encoding>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.1.2184</version>
             </plugin>
         </plugins>
     </build>

@@ -9,6 +9,8 @@ workspace:
       tools-webide-idea: 6800
       tools-ssh: 6822
       tools-phpmyadmin: 8090
+      tools-nacos: 8848
+      tools-sonar: 9000
       apps-ruoyi-ui: 8000
       apps-ruoyi-admin: 8080
     ide-type: jb-projector
@@ -45,9 +47,10 @@ workspace:
       ports:
         - 3306:3306
       environment:
+        MYSQL_USER: root
         MYSQL_ROOT_PASSWORD: password
       volumes:
-        - './.ide/.data/mysql-data:/var/lib/mysql'
+        - '~/.ide/template/java/ruoyi-cloud/sql:/docker-entrypoint-initdb.d'
       networks:
         - ruoyi-dev-network
 
@@ -59,8 +62,11 @@ workspace:
       environment:
         MODE: standalone
       volumes:
-        - './.ide/nacos/logs/:/home/nacos/logs'
         - './.ide/nacos/conf/application.properties:/home/nacos/conf/application.properties'
+      expose:
+        - 8848
+        - 9848
+        - 9849
       ports:
         - 8848:8848
         - 9848:9848
@@ -89,6 +95,37 @@ workspace:
         - 6379
       ports:
         - "6379:6379"
+      networks:
+        - ruoyi-dev-network
+        
+    sonar-postgres:
+      image: postgres
+      restart: always
+      container_name: sonarqube_postgres
+      ports:
+        - 5432:5432
+      environment:
+        TZ: Asia/Shanghai
+        POSTGRES_USER: sonar
+        POSTGRES_PASSWORD: sonar
+        POSTGRES_DB: sonar
+      networks:
+        - ruoyi-dev-network
+
+    sonar-sonar:
+      image: sonarqube
+      restart: always
+      container_name: sonarqube
+      depends_on:
+        - sonar-postgres
+      expose:
+        - 9000
+      ports:
+        - 9000:9000
+      environment:
+        SONARQUBE_JDBC_USERNAME: sonar
+        SONARQUBE_JDBC_PASSWORD: sonar
+        SONARQUBE_JDBC_URL: jdbc:postgresql://sonar-postgres:5432/sonar
       networks:
         - ruoyi-dev-network
   networks:

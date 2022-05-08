@@ -67,7 +67,7 @@ smartide new <sdkName> -t <TypeName>
 
 ## 示例
 
-请参考 [Node.Js快速启动手册](https://smartide.cn/zh/docs/quickstart/new-node/) 了解如何使用 smartide new 命令快速创建一个基于 node express 框架的应用程序开发工作区。
+请参考 [Node.Js快速启动手册](https://smartide.cn/zh/docs/quickstart/node/) 了解如何使用 smartide new 命令快速创建一个基于 node express 框架的应用程序开发工作区。
 
 ## 如何添加你自己的模板
 
@@ -124,7 +124,7 @@ workspace:
 
 ### 制作并测试自己的模板
 
-1. 按照 [安装手册](https://smartide.cn/zh/docs/install/) 安装 SmartIDE 命令行工具 
+1. 按照 [安装手册](https://smartide.cn/zh/docs/install/cli/) 安装 SmartIDE 命令行工具 
 2. 执行 smartide new 让 SmartIDE 完成当前模板的下载
 3. 进入 ~/.ide/template 目录，执行 git checkout -b {分支名称} 创建一个新分支
 

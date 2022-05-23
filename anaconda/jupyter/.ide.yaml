@@ -1,0 +1,35 @@
+version: smartide/v0.3
+orchestrator:
+  type: docker-compose
+  version: 3
+workspace:
+  dev-container:
+    service-name: smartide-anaconda-jupyter
+    ports:
+      tools-webide-vscode: 6800
+      tools-ssh: 6822
+      tools-jupyter: 8888
+    ide-type: vscode
+    volumes: 
+      git-config: true
+      ssh-key: true
+    command:
+      - jupyter notebook /home/project --ip=* --port=8888 --NotebookApp.token='' --no-browser
+      
+  services:
+    smartide-anaconda-jupyter:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-anaconda-v2-jupyter:3605
+      restart: always
+      environment:
+        LOCAL_USER_PASSWORD: root123
+      volumes:
+        - .:/home/project
+      ports:
+        - 6822:22
+        - 6800:3000
+        - 8888:8888
+      networks:
+        - smartide-network  
+  networks:
+    smartide-network:
+      external: true

@@ -143,6 +143,18 @@
     "command": []
   },
   {
+    "typename": "anaconda",
+    "subtype": [
+      {
+        "name": "jupyter",
+        "title": "基于anaconda的jupyter环境",
+        "desc": "使用anaconda环境创建jupyter notebook",
+        "logo": ""
+      }
+    ],
+    "command": []
+  },
+  {
     "typename": "php",
     "subtype": [
       {

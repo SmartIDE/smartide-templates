@@ -4,11 +4,11 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-dotnet-vscode-dapr
+    service-name: dev
     ports:
       tools-webide-vscode: 6800
       tools-ssh: 6822
-      apps-application: 3001
+      apps-application: 5000
     ide-type: vscode
     volumes: 
         git-config: true
@@ -17,7 +17,7 @@ workspace:
       - code --install-extension muhammad-sammy.csharp
       - dapr init
   services:
-    smartide-template-dotnet-vscode-dapr:
+    dev:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-dotnet-v2-vscode-sysbox
       restart: always
       runtime: sysbox-runc
@@ -28,7 +28,7 @@ workspace:
       ports:
         - 6822:22
         - 6800:3000
-        - 3001:3001
+        - 5000:5000
       volumes:
         - .:/home/project
       networks:

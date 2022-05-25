@@ -9,9 +9,6 @@ workspace:
       tools-webide-vscode: 6800
       tools-ssh: 6822
       apps-application: 3001
-      apps-emailClient: 4000
-      apps-virtualSimulator: 5000
-      apps-messageQueueService: 9001
     ide-type: vscode
     volumes: 
         git-config: true

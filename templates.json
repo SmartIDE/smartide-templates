@@ -1,7 +1,14 @@
 [
   {
     "typename": "base",
-    "subtype": [],
+    "subtype": [
+      {
+        "name": "vmlc",
+        "title": "基于Sysbox的基础环境",
+        "desc": "使用基于Sysbox的基础容器环境",
+        "logo": ""
+      }
+    ],
     "command": []
   },
   {

@@ -16,7 +16,7 @@ workspace:
     smartide-template-base-vmlc:
       image:  registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vmlc
       runtime: sysbox-runc
-      hostname: basevmlc
+      hostname: dev-container
       restart: always
       volumes:
         - .:/home/project

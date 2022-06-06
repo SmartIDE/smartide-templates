@@ -7,6 +7,12 @@
         "title": "基于VMLC的基础环境",
         "desc": "使用基于VMLC的基础容器环境",
         "logo": ""
+      },
+      {
+        "name": "vscode-vmlc",
+        "title": "基于VMLC的VSCode基础环境",
+        "desc": "使用基于VMLC的VSCode基础容器环境",
+        "logo": ""
       }
     ],
     "command": []

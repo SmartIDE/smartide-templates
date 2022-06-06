@@ -8,7 +8,7 @@ workspace:
     ports:
       tools-ssh: 6822
       tools-webide-vscode: 6800
-    ide-type: sdk-only
+    ide-type: vscode
     volumes: 
       git-config: true
       ssh-key: true

@@ -93,6 +93,12 @@
         "logo": ""
       },
       {
+        "name": "vscode-vmlc",
+        "title": "基于VMLC基础的VSCode的dotnet环境",
+        "desc": "使用基于VMLC基础的dotnet环境创建VSCode IDE",
+        "logo": ""
+      },
+      {
         "name": "vscode-dapr",
         "title": "基于VSCode并集成dapr的dotnet环境",
         "desc": "使用dotnet环境同时集成了dapr创建VSCode IDE",

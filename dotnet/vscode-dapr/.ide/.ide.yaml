@@ -23,7 +23,7 @@ workspace:
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-dotnet-v2-vmlc
       restart: always
       runtime: sysbox-runc
-      hostname: syscont
+      hostname: dev-conatiner
       environment:
         ROOT_PASSWORD: root123
         LOCAL_USER_PASSWORD: root123

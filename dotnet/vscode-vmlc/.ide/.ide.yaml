@@ -9,8 +9,6 @@ workspace:
       tools-webide-vscode: 6800
       tools-ssh: 6822
       apps-application: 5000
-      apps-application-E-mail-Service: 4000
-      apps-application-MqttTrafficControlService: 9001
     ide-type: vscode
     volumes: 
         git-config: true
@@ -26,9 +24,7 @@ workspace:
       ports:
         - 6822:22
         - 6800:3000
-        - 4000:4000
         - 5000:5000
-        - 9001:9001
       volumes:
         - .:/home/project
       networks:

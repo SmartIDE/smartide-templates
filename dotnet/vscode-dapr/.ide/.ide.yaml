@@ -9,6 +9,8 @@ workspace:
       tools-webide-vscode: 6800
       tools-ssh: 6822
       apps-application: 5000
+      apps-application-E-mail-Service: 4000
+      apps-application-MqttTrafficControlService: 9001
     ide-type: vscode
     volumes: 
         git-config: true
@@ -18,7 +20,7 @@ workspace:
       - dapr init
   services:
     dev:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-dotnet-v2-vscode-sysbox
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-dotnet-v2-vmlc
       restart: always
       runtime: sysbox-runc
       hostname: syscont
@@ -29,6 +31,8 @@ workspace:
         - 6822:22
         - 6800:3000
         - 5000:5000
+        - 4000:4000
+        - 9001:9001
       volumes:
         - .:/home/project
       networks:

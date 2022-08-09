@@ -18,7 +18,7 @@ workspace:
       - code --install-extension pivotal.vscode-boot-dev-pack
   services:
     smartide-template-java-vscode:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode:2192
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode:latest
       restart: always
       environment:
         ROOT_PASSWORD: root123

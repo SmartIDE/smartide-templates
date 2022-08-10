@@ -44,7 +44,10 @@ vm.max_map_count=262144
 # 设置系统所有进程一共可以打开的文件数量
 fs.file-max = 6553600
 ```
-
+修改立即生效：
+```shell
+/sbin/sysctl -p
+```
 启动方式：
 - 1.命令行
 ```shell

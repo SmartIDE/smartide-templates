@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-base-dev
+    service-name: smartide-base-vmlc-dev
     webide-port: 6800
     
     ports: # 申明端口

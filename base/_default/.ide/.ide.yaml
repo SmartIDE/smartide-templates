@@ -12,7 +12,7 @@ workspace:
       tools-ssh: 6822
       apps-application: 3001
     
-    ide-type: base
+    ide-type: sdk-only
     volumes: 
       git-config: true
       ssh-key: true

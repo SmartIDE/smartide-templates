@@ -12,7 +12,7 @@ metadata:
 spec:
   runtimeClassName: sysbox-runc
   containers:
-  - name: smartide-base-dev
+  - name: smartide-base-vmlc-dev
     image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vmlc    
     imagePullPolicy: Always
     ports:
@@ -23,7 +23,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: smartide-base-dev
+  name: smartide-base-vmlc-dev
 spec:
   ports:
     - name: "3001"

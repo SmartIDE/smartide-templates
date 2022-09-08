@@ -4,29 +4,16 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-base-v2-vscode-vmlc
+    service-name: smartide-vmlc-vscode-service
+
     ports:
       tools-ssh: 6822
       tools-webide-vscode: 6800
     ide-type: vscode
+
     volumes: 
       git-config: true
       ssh-key: true
-  services:
-    smartide-base-v2-vscode-vmlc:
-      image:  registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vscode-vmlc
-      runtime: sysbox-runc
-      hostname: dev-container
-      restart: always
-      volumes:
-        - .:/home/project
-      ports:
-        - 6822:22
-        - 6800:3000
-      volumes:
-        - .:/home/project
-      networks:
-        - smartide-network  
-  networks:
-    smartide-network:
-      external: true
+
+  kube-deploy-files: "vscode-vmlc-k8s-deployment.yaml" 
+  docker-compose-file: "vscode-vmlc-docker-compose.yaml"

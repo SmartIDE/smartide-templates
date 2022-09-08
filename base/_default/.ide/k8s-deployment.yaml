@@ -1,0 +1,68 @@
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smartide-base-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      smartide-base.service: smartide-base
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        smartide-base.service: smartide-base
+    spec:
+      containers:
+        - env:
+            - name: LOCAL_USER_PASSWORD
+              value: root123           
+          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2:latest
+          imagePullPolicy: Always
+          name: smartide-base-dev
+          ports:
+            - containerPort: 22
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: smartide-base-dev
+spec:
+  ports:    
+    - name: "6822"
+      port: 6822
+      targetPort: 22
+  selector:
+    smartide-base.service: smartide-base
+status:
+  loadBalancer: {}
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: smartide-base-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              smartide-base/smartide-network: "true"
+  podSelector:
+    matchLabels:
+      smartide-base/smartide-network: "true"

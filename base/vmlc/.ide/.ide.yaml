@@ -1,29 +1,20 @@
 version: smartide/v0.3
 orchestrator:
-  type: docker-compose
+  type: allinone
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-base-vmlc
-    ports:
+    service-name: smartide-base-vmlc-dev
+    
+    ports: # 申明端口
       tools-ssh: 6822
+    
     ide-type: sdk-only
     volumes: 
       git-config: true
       ssh-key: true
-      
-  services:
-    smartide-template-base-vmlc:
-      image:  registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vmlc
-      runtime: sysbox-runc
-      hostname: dev-container
-      restart: always
-      volumes:
-        - .:/home/project
-      ports:
-        - 6822:22
-      networks:
-        - smartide-network  
-  networks:
-    smartide-network:
-      external: true
+    command:
+      - dir
+
+  kube-deploy-files: "vmlc-k8s-deployment.yaml" 
+  docker-compose-file: "vmlc-docker-compose.yaml"

@@ -5,12 +5,9 @@ orchestrator:
 workspace:
   dev-container:
     service-name: smartide-base-dev
-    webide-port: 6800
-    
+
     ports: # 申明端口
-      tools-webide-vscode: 6800
       tools-ssh: 6822
-      apps-application: 3001
     
     ide-type: sdk-only
     volumes: 

@@ -4,36 +4,42 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: smartide-base-vmlc-dev
+  name: smartide-vmlc-vscode-pod
   annotations:
     io.kubernetes.cri-o.userns-mode: "auto:size=65536"
   labels:
-    smartide-base.service: smartide-base
+    smartide-vmlc-vscode.service: smartide-vmlc-vscode
 spec:
   runtimeClassName: sysbox-runc
   containers:
     - env:
         - name: LOCAL_USER_PASSWORD
           value: root123     
-      name: smartide-base-vmlc-dev
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vmlc:latest
+      name: smartide-vmlc-vscode-dev
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vscode-vmlc:latest
       imagePullPolicy: Always
       ports:
-        - containerPort: 22
+        - containerPort: 3001
 
 ---
 
 apiVersion: v1
 kind: Service
 metadata:
-  name: smartide-base-vmlc-dev
+  name: smartide-vmlc-vscode-service
 spec:
-  ports:    
+  ports:
+    - name: "3001"
+      port: 3001
+      targetPort: 3001
+    - name: "6800"
+      port: 6800
+      targetPort: 3000
     - name: "6822"
       port: 6822
       targetPort: 22
   selector:
-    smartide-base.service: smartide-base
+    smartide-vmlc-vscode.service: smartide-vmlc-vscode
 status:
   loadBalancer: {}
 
@@ -42,13 +48,13 @@ status:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: smartide-base-network
+  name: smartide-vmlc-vscode-network
 spec:
   ingress:
     - from:
         - podSelector:
             matchLabels:
-              smartide-base/smartide-network: "true"
+              smartide-vmlc-vscode/smartide-network: "true"
   podSelector:
     matchLabels:
-      smartide-base/smartide-network: "true"
+      smartide-vmlc-vscode/smartide-network: "true"

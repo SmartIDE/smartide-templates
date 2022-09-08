@@ -1,19 +1,21 @@
 version: smartide/v0.3
 orchestrator:
-  type: docker-compose
+  type: allinone
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-vmlc-vscode-service
+    service-name: smartide-vmlc-vscode-dev
 
     ports:
-      tools-ssh: 6822
       tools-webide-vscode: 6800
+      tools-ssh: 6822
     ide-type: vscode
 
     volumes: 
       git-config: true
       ssh-key: true
+    command:
+      - dir
 
   kube-deploy-files: "vscode-vmlc-k8s-deployment.yaml" 
   docker-compose-file: "vscode-vmlc-docker-compose.yaml"

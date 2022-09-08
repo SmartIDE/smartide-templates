@@ -2,19 +2,16 @@
 version: "3"
 services:
   smartide-base-vmlc-dev:
-    image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vmlc
+    image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vmlc:latest
     runtime: sysbox-runc
     hostname: dev-container
     restart: always
     environment:
-      ROOT_PASSWORD: root123
       LOCAL_USER_PASSWORD: root123       
     volumes:
       - .:/home/project
     ports:
-      - 3001:3001
       - 6822:22
-      - 6800:3000
     networks:
       - smartide-network  
 

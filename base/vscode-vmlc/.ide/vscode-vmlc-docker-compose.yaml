@@ -1,7 +1,7 @@
 
 version: "3"
 services:
-  smartide-vmlc-vscode-service:
+  smartide-vmlc-vscode-dev:
     image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vscode-vmlc:latest
     runtime: sysbox-runc
     hostname: dev-container

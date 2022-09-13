@@ -1,0 +1,54 @@
+
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: smartide-node-vmlc-dev
+  annotations:
+    io.kubernetes.cri-o.userns-mode: "auto:size=65536"
+  labels:
+    smartide-node.service: smartide-node
+spec:
+  runtimeClassName: sysbox-runc
+  containers:
+    - env:
+        - name: LOCAL_USER_PASSWORD
+          value: root123     
+      name: smartide-node-vmlc-dev
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-vmlc:latest
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 22
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: smartide-node-vmlc-dev
+spec:
+  ports:    
+    - name: "6822"
+      port: 6822
+      targetPort: 22
+  selector:
+    smartide-node.service: smartide-node
+status:
+  loadBalancer: {}
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: smartide-node-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              smartide-node/smartide-network: "true"
+  podSelector:
+    matchLabels:
+      smartide-node/smartide-network: "true"

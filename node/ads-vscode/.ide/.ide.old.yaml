@@ -1,16 +1,15 @@
 version: smartide/v0.3
 orchestrator:
-  type: allinone
+  type: docker-compose
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-vscode-node-dev
-
+    service-name: smartide-template-node-vscode
     ports:
       tools-webide-vscode: 6800
       tools-ssh: 6822
+      apps-application: 3001
     ide-type: vscode
-
     volumes: 
       git-config: true
       ssh-key: true
@@ -29,6 +28,24 @@ workspace:
       - npm run package:dev ##在终端手工运行此命令,生成ads安装包,将vsix安装至ads，
       - npm run start:dev ##在终端手工运行此命令，本地可以打开http://localhost:3001
       ## 打开ads即可看到插件显示效果
-
-  kube-deploy-files: "vscode-k8s-deployment.yaml" 
-  docker-compose-file: "vscode-docker-compose.yaml"
+      
+      
+      
+  services:
+    smartide-template-node-vscode:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-vscode:1748
+      restart: always
+      environment:
+        ROOT_PASSWORD: root123
+        LOCAL_USER_PASSWORD: root123
+      volumes:
+        - .:/home/project
+      ports:
+        - 6822:22
+        - 6800:3000
+        - 3001:3001
+      networks:
+        - smartide-network  
+  networks:
+    smartide-network:
+      external: true

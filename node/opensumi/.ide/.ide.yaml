@@ -7,7 +7,7 @@ workspace:
     service-name: smartide-opensumi-node-dev
 
     ports:
-      tools-webide-vscode: 6800
+      tools-webide-opensumi: 6800
       tools-ssh: 6822
     ide-type: opensumi
 

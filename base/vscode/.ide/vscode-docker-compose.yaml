@@ -1,8 +1,8 @@
 
 version: "3"
 services:
-  smartide-base-node-dev:
-    image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-base:latest
+  smartide-base-vscode-dev:
+    image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vscode:latest
     runtime: sysbox-runc
     hostname: dev-container
     restart: always

@@ -4,33 +4,27 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-node-webstorm
+    service-name: smartide-template-node-vscode
     ports:
-      tools-webide-webstorm: 6800
+      tools-webide-vscode: 6800
       tools-ssh: 6822
       apps-application: 3001
-    ide-type: jb-projector
+    ide-type: vscode
     volumes: 
       git-config: true
       ssh-key: true
-    command:
-      - npm config get registry
-    #  - npm config set registry https://registry.npmmirror.com
-    #  - npm install
-    #  - npm start
       
   services:
-    smartide-template-node-webstorm:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-jetbrains-webstorm:latest
+    smartide-template-node-vscode:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vscode:1748
       restart: always
       environment:
-        ROOT_PASSWORD: root123
         LOCAL_USER_PASSWORD: root123
       volumes:
         - .:/home/project
       ports:
         - 6822:22
-        - 6800:8887
+        - 6800:3000
         - 3001:3001
       networks:
         - smartide-network  

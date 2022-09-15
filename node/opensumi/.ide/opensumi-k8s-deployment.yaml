@@ -1,0 +1,72 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smartide-opensumi-node-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      smartide-opensumi-node.service: smartide-opensumi-node
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        smartide-opensumi-node.service: smartide-opensumi-node
+    spec:
+      containers:
+        - env:
+            - name: LOCAL_USER_PASSWORD
+              value: root123
+          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-opensumi:latest
+          imagePullPolicy: Always
+          name: smartide-opensumi-node-dev
+          ports:
+            - containerPort: 3000
+            - containerPort: 22
+            
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: smartide-opensumi-node-service
+spec:
+  ports:   
+    - name: "6800"
+      port: 6800
+      targetPort: 3000
+    - name: "6822"
+      port: 6822
+      targetPort: 22
+  selector:
+    smartide-opensumi-node.service: smartide-opensumi-node
+status:
+  loadBalancer: {}
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: smartide-opensumi-node-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              smartide-opensumi-node/smartide-network: "true"
+  podSelector:
+    matchLabels:
+      smartide-opensumi-node/smartide-network: "true"

@@ -3,6 +3,12 @@
     "typename": "base",
     "subtype": [
       {
+        "name": "vscode",
+        "title": "vscode的基础环境",
+        "desc": "使用vscode的基础容器环境",
+        "logo": ""
+      },
+      {
         "name": "vmlc",
         "title": "基于VMLC的基础环境",
         "desc": "使用基于VMLC的基础容器环境",

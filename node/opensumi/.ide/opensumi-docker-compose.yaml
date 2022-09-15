@@ -3,7 +3,6 @@ version: "3"
 services:
   smartide-opensumi-node-dev:
     image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-opensumi:latest
-    runtime: sysbox-runc
     hostname: dev-container
     restart: always
     environment:

@@ -41,7 +41,7 @@ status: {}
 apiVersion: v1
 kind: Service
 metadata:
-  name: smartide-vmlc-vscode-node-service
+  name: smartide-vmlc-vscode-node-dev
 spec:
   ports:   
     - name: "6800"

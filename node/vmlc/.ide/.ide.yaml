@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-base-vmlc-dev
+    service-name: smartide-node-vmlc-dev
     
     ports: # 申明端口
       tools-ssh: 6822

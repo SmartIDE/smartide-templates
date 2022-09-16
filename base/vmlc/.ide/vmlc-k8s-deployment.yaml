@@ -17,6 +17,7 @@ spec:
           value: root123     
       name: smartide-base-vmlc-dev
       image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vmlc:latest
+      command: ["/sbin/init"]
       imagePullPolicy: Always
       ports:
         - containerPort: 22

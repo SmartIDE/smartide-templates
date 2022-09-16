@@ -1,40 +1,27 @@
+
 ---
 
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
-  name: smartide-vmlc-vscode-dev
+  name: smartide-vmlc-vscode-pod
+  annotations:
+    io.kubernetes.cri-o.userns-mode: "auto:size=65536"
+  labels:
+    smartide-vmlc-vscode.service: smartide-vmlc-vscode
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      boathouse-calculator.service: smartide-vmlc-vscode
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        boathouse-calculator.service: smartide-vmlc-vscode
-    spec:
-      containers:
-        - env:
-            - name: LOCAL_USER_PASSWORD
-              value: root123
-          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vscode-vmlc:latest
-          imagePullPolicy: Always
-          name: smartide-vmlc-vscode-dev
-          ports:
-            - containerPort: 3000
-            - containerPort: 22
-            
-          resources:
-            requests:
-              memory: "1Gi"
-              cpu: "500m"
-            limits:
-              memory: "1Gi"
-              cpu: "500m"
-status: {}
+  runtimeClassName: sysbox-runc
+  containers:
+    - env:
+        - name: LOCAL_USER_PASSWORD
+          value: root123     
+      name: smartide-vmlc-vscode-dev
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-base-v2-vscode-vmlc:latest
+      command: ["/sbin/init"]
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 3000
+        - containerPort: 22
 
 ---
 
@@ -43,7 +30,7 @@ kind: Service
 metadata:
   name: smartide-vmlc-vscode-service
 spec:
-  ports:   
+  ports:
     - name: "6800"
       port: 6800
       targetPort: 3000
@@ -51,7 +38,7 @@ spec:
       port: 6822
       targetPort: 22
   selector:
-    boathouse-calculator.service: smartide-vmlc-vscode
+    smartide-vmlc-vscode.service: smartide-vmlc-vscode
 status:
   loadBalancer: {}
 

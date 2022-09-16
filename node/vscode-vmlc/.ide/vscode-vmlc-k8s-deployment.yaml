@@ -1,40 +1,26 @@
 ---
 
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: smartide-vmlc-vscode-node-dev
+  annotations:
+    io.kubernetes.cri-o.userns-mode: "auto:size=65536"
+  labels:
+    smartide-node.service: smartide-node
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      boathouse-calculator.service: smartide-vmlc-vscode-node
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        boathouse-calculator.service: smartide-vmlc-vscode-node
-    spec:
-      containers:
-        - env:
-            - name: LOCAL_USER_PASSWORD
-              value: root123
-          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-vscode-vmlc:latest
-          imagePullPolicy: Always
-          name: smartide-vmlc-vscode-node-dev
-          ports:
-            - containerPort: 3000
-            - containerPort: 22
-            
-          resources:
-            requests:
-              memory: "1Gi"
-              cpu: "500m"
-            limits:
-              memory: "1Gi"
-              cpu: "500m"
-status: {}
+  runtimeClassName: sysbox-runc
+  containers:
+    - env:
+        - name: LOCAL_USER_PASSWORD
+          value: root123     
+      name: smartide-vmlc-vscode-node-dev
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-vscode-vmlc:latest
+      command: ["/sbin/init"]
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 3000
+        - containerPort: 22
 
 ---
 
@@ -46,12 +32,12 @@ spec:
   ports:   
     - name: "6800"
       port: 6800
-      targetPort: 3000
+      targetPort: 3000 
     - name: "6822"
       port: 6822
       targetPort: 22
   selector:
-    boathouse-calculator.service: smartide-vmlc-vscode-node
+    smartide-node.service: smartide-node
 status:
   loadBalancer: {}
 
@@ -60,13 +46,13 @@ status:
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:
-  name: smartide-vmlc-vscode-node-network
+  name: smartide-node-network
 spec:
   ingress:
     - from:
         - podSelector:
             matchLabels:
-              smartide-vmlc-vscode-node/smartide-network: "true"
+              smartide-node/smartide-network: "true"
   podSelector:
     matchLabels:
-      smartide-vmlc-vscode-node/smartide-network: "true"
+      smartide-node/smartide-network: "true"

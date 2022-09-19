@@ -24,7 +24,7 @@ spec:
           imagePullPolicy: Always
           name: smartide-opensumi-node-dev
           ports:
-            - containerPort: 3000
+            - containerPort: 8000
             - containerPort: 22
             
           resources:
@@ -46,7 +46,7 @@ spec:
   ports:   
     - name: "6800"
       port: 6800
-      targetPort: 3000
+      targetPort: 8000
     - name: "6822"
       port: 6822
       targetPort: 22

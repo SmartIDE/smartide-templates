@@ -20,7 +20,7 @@ spec:
         - env:
             - name: LOCAL_USER_PASSWORD
               value: root123
-          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-jetbrains-webstorm:2021.3.2-5866
+          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-jetbrains-webstorm:latest
           imagePullPolicy: Always
           name: smartide-webstorm-node-dev
           ports:

@@ -2,7 +2,7 @@
 version: "3"
 services:
   smartide-webstorm-node-dev:
-    image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-jetbrains-webstorm:2021.3.2-5866
+    image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-jetbrains-webstorm:latest
     hostname: dev-container
     restart: always
     environment:

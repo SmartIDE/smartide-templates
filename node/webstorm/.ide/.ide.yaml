@@ -1,39 +1,26 @@
 version: smartide/v0.3
 orchestrator:
-  type: docker-compose
+  type: allinone
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-node-webstorm
+    service-name: smartide-webstorm-node-dev
+
     ports:
-      tools-webide-webstorm: 6800
+      tools-webide-vscode: 6800
       tools-ssh: 6822
-      apps-application: 3001
     ide-type: jb-projector
+
     volumes: 
       git-config: true
       ssh-key: true
     command:
       - npm config get registry
+    #  - npm install -g express-generator
+    #  - express --view=pug myapp
     #  - npm config set registry https://registry.npmmirror.com
     #  - npm install
     #  - npm start
-      
-  services:
-    smartide-template-node-webstorm:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-node-v2-jetbrains-webstorm:latest
-      restart: always
-      environment:
-        ROOT_PASSWORD: root123
-        LOCAL_USER_PASSWORD: root123
-      volumes:
-        - .:/home/project
-      ports:
-        - 6822:22
-        - 6800:8887
-        - 3001:3001
-      networks:
-        - smartide-network  
-  networks:
-    smartide-network:
-      external: true
+
+  kube-deploy-files: "webstorm-k8s-deployment.yaml" 
+  docker-compose-file: "webstorm-docker-compose.yaml"

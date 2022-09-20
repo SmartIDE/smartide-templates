@@ -1,7 +1,7 @@
 
 version: "3"
 services:
-  smartide-vscode-node-dev:
+  smartide-vscode-java-dev:
     image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-vscode:latest
     hostname: dev-container
     restart: always

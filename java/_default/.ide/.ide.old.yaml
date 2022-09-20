@@ -1,0 +1,31 @@
+version: smartide/v0.3
+orchestrator:
+  type: docker-compose
+  version: 3
+workspace:
+  dev-container:
+    service-name: smartide-template-java
+    ports:
+      tools-webide-port: 6800
+      tools-ssh: 6822
+    ide-type: sdk-only
+    volumes: 
+      git-config: true
+      ssh-key: true
+  services:
+    smartide-template-java:     
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2:2098
+      restart: always
+      environment:
+        ROOT_PASSWORD: root123
+        LOCAL_USER_PASSWORD: root123
+      ports:
+        - 6822:22
+        - 6800:3000
+      volumes:
+        - .:/home/project
+      networks:
+        - smartide-network  
+  networks:
+    smartide-network:
+      external: true      

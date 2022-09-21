@@ -1,34 +1,21 @@
 version: smartide/v0.3
 orchestrator:
-  type: docker-compose
+  type: allinone
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-template-java-idea
+    service-name: smartide-idea-java-dev
+
     ports:
-      tools-webide-idea: 6800
+      tools-webide-vscode: 6800
       tools-ssh: 6822
-      apps-application: 3001
     ide-type: jb-projector
+
     volumes: 
       git-config: true
       ssh-key: true
-  services:
-    smartide-template-java-idea:
-      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-jetbrains-idea:2021.2.3-openjdk-11-jdk-2081
-      #image: smartide/smartide-java-v2-jetbrains-idea:2021.2.3-2081
-      restart: always
-      environment:
-        ROOT_PASSWORD: root123
-        LOCAL_USER_PASSWORD: root123
-      ports:
-        - 6822:22
-        - 6800:8887
-        - 3001:3001
-      volumes:
-        - .:/home/project
-      networks:
-        - smartide-network  
-  networks:
-    smartide-network:
-      external: true      
+    command:
+      - npm config get registry
+
+  kube-deploy-files: "idea-k8s-deployment.yaml" 
+  docker-compose-file: "idea-docker-compose.yaml"

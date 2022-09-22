@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-vscode-go-dev
+    service-name: smartide-vmlc-vscode-golang-dev
 
     ports:
       tools-webide-vscode: 6800
@@ -14,8 +14,8 @@ workspace:
     volumes: 
       git-config: true
       ssh-key: true
-    command: 
-      - go env -w GOPROXY=https://goproxy.cn,direct
+    command:
+      - dir
 
-  kube-deploy-files: "vscode-k8s-deployment.yaml" 
-  docker-compose-file: "vscode-docker-compose.yaml"
+  kube-deploy-files: "vscode-vmlc-k8s-deployment.yaml" 
+  docker-compose-file: "vscode-vmlc-docker-compose.yaml"

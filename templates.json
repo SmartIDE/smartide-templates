@@ -177,6 +177,18 @@
         "logo": ""
       },
       {
+        "name": "vmlc",
+        "title": "基于VMLC的golang环境",
+        "desc": "使用基于VMLC的golang环境创建IDE",
+        "logo": ""
+      },
+      {
+        "name": "vscode-vmlc",
+        "title": "基于VMLC的VSCode的golang环境",
+        "desc": "使用基于VMLC的golang环境创建VSCode IDE",
+        "logo": ""
+      },
+      {
         "name": "goland",
         "title": "基于GoLand的golang环境",
         "desc": "使用golang环境创建GoLand IDE",

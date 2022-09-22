@@ -2,7 +2,9 @@
 version: "3"
 services:
   smartide-go-dev:
-    image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-golang-v2:latest
+    image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-golang-v2:latest #=go v1.17.5
+    # registry.cn-hangzhou.aliyuncs.com/smartide/smartide-golang-v2:1.16.12 # go v1.16.12
+    # registry.cn-hangzhou.aliyuncs.com/smartide/smartide-golang-v2:1.17.5  # go v1.17.5
     imagePullPolicy: Always
     restart: always
     environment:

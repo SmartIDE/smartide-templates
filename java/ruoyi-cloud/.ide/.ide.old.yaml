@@ -1,0 +1,147 @@
+version: smartide/v0.1
+orchestrator:
+  type: docker-compose
+  version: 3
+workspace:
+  dev-container:
+    service-name: ruoyi-dev
+    ports:
+      tools-webide-idea: 6800
+      tools-ssh: 6822
+      tools-phpmyadmin: 8090
+      tools-nacos: 8848
+      tools-sonar: 9000
+      apps-ruoyi-ui: 8000
+      apps-ruoyi-admin: 8080
+    ide-type: jb-projector
+    volumes:
+      git-config: true
+      ssh-key: true
+  services:
+    ruoyi-dev:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-jetbrains-idea:2021.2.3-openjdk-11-jdk-2081
+      restart: always
+      environment:
+        ROOT_PASSWORD: root123
+        LOCAL_USER_PASSWORD: root123
+      ports:
+        - 8080:8080
+        - 8000:80
+        - 6822:22
+        - 6800:8887
+      volumes:
+        - .:/home/project
+        - $HOME/.m2/repository:/home/smartide/.m2/repository
+      networks:
+        - ruoyi-dev-network
+
+    ruoyi-db:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/mysql:8.0.21
+      command:
+        - --default-authentication-plugin=mysql_native_password
+        - --character-set-server=utf8mb4
+        - --collation-server=utf8mb4_unicode_ci
+        - --init-file=/docker-entrypoint-initdb.d/init.sql
+      healthcheck:
+        test: mysql --user=root --password=password -e 'SHOW DATABASES LIKE "ry-config";'
+        interval: 3s
+        timeout: 1s
+        retries: 16
+      restart: always
+      expose:
+        - 3306
+      ports:
+        - 3306:3306
+      environment:
+        MYSQL_USER: root
+        MYSQL_ROOT_PASSWORD: password
+      volumes:
+        - './.ide/mysql/sql:/docker-entrypoint-initdb.d'
+      networks:
+        - ruoyi-dev-network
+
+    ruoyi-nacos:
+      container_name: ruoyi-nacos
+      image: nacos/nacos-server:v2.0.4
+      restart: always
+      build:
+        context: './.ide/nacos'
+      environment:
+        MODE: standalone
+      volumes:
+        - './.ide/nacos/conf/application.properties:/home/nacos/conf/application.properties'
+      expose:
+        - 8848
+        - 9848
+        - 9849
+      ports:
+        - 8848:8848
+        - 9848:9848
+        - 9849:9849
+      healthcheck:
+        test: curl -f http://localhost:8848/nacos/index.html || kill 1
+        interval: 1m30s
+        timeout: 10s
+        retries: 3
+        start_period: 30s
+      depends_on:
+        ruoyi-db:
+          condition: service_healthy
+      networks:
+        - ruoyi-dev-network
+
+    ruoyi-phpmyadmin:
+      image: registry.cn-hangzhou.aliyuncs.com/boathouse/phpmyadmin:5.0.4-apache
+      restart: always
+      expose:
+        - 8090
+      ports:
+        - 8090:80
+      environment:
+        PMA_ARBITRARY: "1"
+      networks:
+        - ruoyi-dev-network
+
+    ruoyi-redis:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/redis:6.0.6
+      restart: always
+      expose:
+        - 6379
+      ports:
+        - "6379:6379"
+      networks:
+        - ruoyi-dev-network
+        
+    sonar-postgres:
+      image: postgres
+      restart: always
+      container_name: sonarqube_postgres
+      ports:
+        - 5432:5432
+      environment:
+        TZ: Asia/Shanghai
+        POSTGRES_USER: sonar
+        POSTGRES_PASSWORD: sonar
+        POSTGRES_DB: sonar
+      networks:
+        - ruoyi-dev-network
+
+    sonar-sonar:
+      image: sonarqube
+      restart: always
+      container_name: sonarqube
+      depends_on:
+        - sonar-postgres
+      expose:
+        - 9000
+      ports:
+        - 9000:9000
+      environment:
+        SONARQUBE_JDBC_USERNAME: sonar
+        SONARQUBE_JDBC_PASSWORD: sonar
+        SONARQUBE_JDBC_URL: jdbc:postgresql://sonar-postgres:5432/sonar
+      networks:
+        - ruoyi-dev-network
+  networks:
+    ruoyi-dev-network:
+      external: true

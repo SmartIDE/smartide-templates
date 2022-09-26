@@ -1,0 +1,74 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smartide-golang-vmlc-go-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      boathouse-calculator.service: smartide-golang-vmlc-go
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        boathouse-calculator.service: smartide-golang-vmlc-go
+    spec:
+      runtimeClassName: sysbox-runc
+      containers:
+        - env:
+            - name: LOCAL_USER_PASSWORD
+              value: root123
+          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-golang-v2-jetbrains-goland-vmlc:latest
+          command: ["/sbin/init"]
+          imagePullPolicy: Always
+          name: smartide-golang-vmlc-go-dev
+          ports:
+            - containerPort: 8887
+            - containerPort: 22
+            
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "2000m"
+            limits:
+              memory: "2Gi"
+              cpu: "2000m"
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: smartide-golang-vmlc-go-service
+spec:
+  ports:   
+    - name: "6800"
+      port: 6800
+      targetPort: 8887
+    - name: "6822"
+      port: 6822
+      targetPort: 22
+  selector:
+    boathouse-calculator.service: smartide-golang-vmlc-go
+status:
+  loadBalancer: {}
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: smartide-golang-vmlc-go-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              smartide-golang-vmlc-go/smartide-network: "true"
+  podSelector:
+    matchLabels:
+      smartide-golang-vmlc-go/smartide-network: "true"

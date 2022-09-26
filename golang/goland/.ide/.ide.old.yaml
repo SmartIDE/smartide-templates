@@ -1,0 +1,36 @@
+version: smartide/v0.3
+orchestrator:
+  type: docker-compose
+  version: 3
+workspace:
+  dev-container:
+    service-name: smartide-template-golang-goland
+    ports:
+      tools-webide-goland: 6800
+      tools-ssh: 6822
+      apps-application: 3001
+    ide-type: jb-projector
+    volumes: 
+        git-config: true
+        ssh-key: true
+    command: 
+        - go env -w GOPROXY=https://goproxy.cn,direct
+    
+  services:
+    smartide-template-golang-goland:
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-golang-v2-jetbrains-goland:2021.3.3-2191
+      restart: always
+      environment:
+        ROOT_PASSWORD: root123
+        LOCAL_USER_PASSWORD: root123
+      ports:
+        - 6822:22
+        - 6800:8887
+        - 3001:3001
+      volumes:
+        - .:/home/project
+      networks:
+        - smartide-network  
+  networks:
+    smartide-network:
+      external: true      

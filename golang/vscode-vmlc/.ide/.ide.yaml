@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-vmlc-vscode-golang-dev
+    service-name: smartide-vmlc-vscode-go-dev
 
     ports:
       tools-webide-vscode: 6800

@@ -13,7 +13,7 @@ workspace:
         git-config: true
         ssh-key: true
     command: 
-        - go env -w GOPROXY=https://goproxy.cn,direct
+      - go env -w GOPROXY=https://goproxy.cn,direct
     
   services:
     smartide-template-golang:

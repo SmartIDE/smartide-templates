@@ -14,8 +14,10 @@ workspace:
     volumes: 
       git-config: true
       ssh-key: true
-    command: 
+     command:
       - go env -w GOPROXY=https://goproxy.cn,direct
+      - dir
+
 
   kube-deploy-files: "vscode-k8s-deployment.yaml" 
   docker-compose-file: "vscode-docker-compose.yaml"

@@ -14,6 +14,7 @@ workspace:
       git-config: true
       ssh-key: true
     command:
+      - go env -w GOPROXY=https://goproxy.cn,direct
       - dir
 
   kube-deploy-files: "vmlc-k8s-deployment.yaml" 

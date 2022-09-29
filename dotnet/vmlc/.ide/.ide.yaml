@@ -4,8 +4,8 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-dotnet-dev
-
+    service-name: smartide-dotnet-vmlc-dev
+    
     ports: # 申明端口
       tools-ssh: 6822
     
@@ -16,5 +16,5 @@ workspace:
     command:
       - dir
 
-  kube-deploy-files: "k8s-deployment.yaml" 
-  docker-compose-file: "docker-compose.yaml"
+  kube-deploy-files: "vmlc-k8s-deployment.yaml" 
+  docker-compose-file: "vmlc-docker-compose.yaml"

@@ -14,7 +14,7 @@ workspace:
     volumes: 
       git-config: true
       ssh-key: true
-     command:
+    command:
       - go env -w GOPROXY=https://goproxy.cn,direct
       - dir
 

@@ -1,42 +1,34 @@
 ---
 
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: smartide-idea-vmlc-java-dev
+  annotations:
+    io.kubernetes.cri-o.userns-mode: "auto:size=65536"
+  labels:
+    smartide-java.service: smartide-idea-vmlc-java
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      boathouse-calculator.service: smartide-idea-vmlc-java
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        boathouse-calculator.service: smartide-idea-vmlc-java
-    spec:
-      runtimeClassName: sysbox-runc
-      containers:
-        - env:
-            - name: LOCAL_USER_PASSWORD
-              value: root123
-          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-jetbrains-idea-vmlc:latest
-          command: ["/sbin/init"]
-          imagePullPolicy: Always
-          name: smartide-idea-vmlc-java-dev
-          ports:
-            - containerPort: 8887
-            - containerPort: 22
-            
-          resources:
-            requests:
-              memory: "2Gi"
-              cpu: "2000m"
-            limits:
-              memory: "2Gi"
-              cpu: "2000m"
-status: {}
+  runtimeClassName: sysbox-runc
+  containers:
+    - env:
+        - name: LOCAL_USER_PASSWORD
+          value: root123     
+      name: smartide-idea-vmlc-java-dev
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-java-v2-jetbrains-idea-vmlc:latest
+      command: ["/sbin/init"]
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 22
+        - containerPort: 8887
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "2000m"
+        limits:
+          memory: "2Gi"
+          cpu: "2000m"
+
 
 ---
 
@@ -53,7 +45,7 @@ spec:
       port: 6822
       targetPort: 22
   selector:
-    boathouse-calculator.service: smartide-idea-vmlc-java
+    smartide-java.service: smartide-idea-vmlc-java
 status:
   loadBalancer: {}
 

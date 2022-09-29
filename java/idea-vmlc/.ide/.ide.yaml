@@ -7,7 +7,7 @@ workspace:
     service-name: smartide-idea-vmlc-java-dev
 
     ports:
-      tools-webide-vscode: 6800
+      tools-webide-idea: 6800
       tools-ssh: 6822
     ide-type: jb-projector
 

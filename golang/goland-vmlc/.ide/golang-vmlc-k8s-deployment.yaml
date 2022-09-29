@@ -1,64 +1,57 @@
 ---
-
-apiVersion: apps/v1
-kind: Deployment
+apiVersion: v1
+kind: Pod
 metadata:
   name: smartide-golang-vmlc-go-dev
+  annotations:
+    io.kubernetes.cri-o.userns-mode: "auto:size=65536"
+  labels:
+    smartide-golang-vmlc.service: smartide-golang-vmlc-go
 spec:
-  replicas: 1
-  selector:
-    matchLabels:
-      boathouse-calculator.service: smartide-golang-vmlc-go
-  strategy:
-    type: Recreate
-  template:
-    metadata:
-      labels:
-        boathouse-calculator.service: smartide-golang-vmlc-go
-    spec:
-      runtimeClassName: sysbox-runc
-      containers:
-        - env:
-            - name: LOCAL_USER_PASSWORD
-              value: root123
-          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-golang-v2-jetbrains-goland-vmlc:latest
-          command: ["/sbin/init"]
-          imagePullPolicy: Always
-          name: smartide-golang-vmlc-go-dev
-          ports:
-            - containerPort: 8887
-            - containerPort: 22
-            
-          resources:
-            requests:
-              memory: "2Gi"
-              cpu: "2000m"
-            limits:
-              memory: "2Gi"
-              cpu: "2000m"
-status: {}
+  runtimeClassName: sysbox-runc
+  containers:
+    - env:
+        - name: LOCAL_USER_PASSWORD
+          value: root123
+      name: smartide-golang-vmlc-go-dev
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-golang-v2-jetbrains-goland-vmlc:latest
+      command: ["/sbin/init"]
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 3001
+        - containerPort: 22
+        - containerPort: 8887
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "2000m"
+        limits:
+          memory: "2Gi"
+          cpu: "2000m"
+
 
 ---
-
 apiVersion: v1
 kind: Service
 metadata:
   name: smartide-golang-vmlc-go-service
 spec:
-  ports:   
+  ports:
     - name: "6800"
       port: 6800
       targetPort: 8887
+    - name: "3001"
+      port: 3001
+      targetPort: 3001
     - name: "6822"
       port: 6822
       targetPort: 22
   selector:
-    boathouse-calculator.service: smartide-golang-vmlc-go
+    smartide-golang-vmlc.service: smartide-golang-vmlc-go
 status:
   loadBalancer: {}
 
 ---
-
 apiVersion: networking.k8s.io/v1
 kind: NetworkPolicy
 metadata:

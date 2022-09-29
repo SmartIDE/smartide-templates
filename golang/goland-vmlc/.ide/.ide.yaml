@@ -7,8 +7,9 @@ workspace:
     service-name: smartide-golang-vmlc-go-dev
 
     ports:
-      tools-webide-vscode: 6800
+      tools-webide-golang: 6800
       tools-ssh: 6822
+      apps-application: 3001
     ide-type: jb-projector
 
     volumes: 

@@ -14,7 +14,7 @@ workspace:
     volumes: 
       git-config: true
       ssh-key: true
-     command:
+    command:
       - code --install-extension muhammad-sammy.csharp
       # - code --install-extension MS-CEINTL.vscode-language-pack-zh-hans
       # - dotnet new console

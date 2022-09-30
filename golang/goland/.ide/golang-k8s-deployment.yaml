@@ -26,7 +26,6 @@ spec:
           ports:
             - containerPort: 8887
             - containerPort: 22
-            - containerPort: 3001
             
           resources:
             requests:
@@ -51,9 +50,6 @@ spec:
     - name: "6822"
       port: 6822
       targetPort: 22
-    - name: "3001"
-      port: 3001
-      targetPort: 3001
   selector:
     smartide-golang.service: smartide-golang-go
 status:

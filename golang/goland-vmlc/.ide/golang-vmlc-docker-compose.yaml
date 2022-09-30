@@ -13,7 +13,6 @@ services:
     ports:
       - 6822:22
       - 6800:8887
-      - 3001:3001
     networks:
       - smartide-network  
 

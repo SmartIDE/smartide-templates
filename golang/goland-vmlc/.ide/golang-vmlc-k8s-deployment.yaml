@@ -18,7 +18,6 @@ spec:
       command: ["/sbin/init"]
       imagePullPolicy: Always
       ports:
-        - containerPort: 3001
         - containerPort: 22
         - containerPort: 8887
       resources:
@@ -40,9 +39,6 @@ spec:
     - name: "6800"
       port: 6800
       targetPort: 8887
-    - name: "3001"
-      port: 3001
-      targetPort: 3001
     - name: "6822"
       port: 6822
       targetPort: 22

@@ -1,7 +1,7 @@
 
 version: "3"
 services:
-  smartide-vscode-go-dev:
+  smartide-vscode-dotnet-dev:
     image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-dotnet-v2-vscode:latest
     hostname: dev-container
     restart: always

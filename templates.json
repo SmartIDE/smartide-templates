@@ -129,15 +129,15 @@
         "logo": ""
       },
       {
-        "name": "vscode-dapr",
-        "title": "基于VSCode并集成dapr的dotnet环境",
-        "desc": "使用dotnet环境同时集成了dapr创建VSCode IDE",
+        "name": "rider",
+        "title": "基于Rider的dotnet环境",
+        "desc": "使用dotnet环境创建Rider IDE",
         "logo": ""
       },
       {
-        "name": "rider",
-        "title": "基于IDEA的dotnet环境",
-        "desc": "使用dotnet环境创建Rider IDE",
+        "name": "rider-vmlc",
+        "title": "基于VMLC基础的Rider的dotnet环境",
+        "desc": "使用基于VMLC基础的dotnet环境创建Rider IDE",
         "logo": ""
       }
     ],

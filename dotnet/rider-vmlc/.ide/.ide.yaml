@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-rider-dotnet-dev
+    service-name: smartide-rider-vmlc-dotnet-dev
 
     ports:
       tools-webide-rider: 6800
@@ -17,5 +17,5 @@ workspace:
     command:
       - npm config get registry
 
-  kube-deploy-files: "rider-k8s-deployment.yaml" 
-  docker-compose-file: "rider-docker-compose.yaml"
+  kube-deploy-files: "rider-vmlc-k8s-deployment.yaml" 
+  docker-compose-file: "rider-vmlc-docker-compose.yaml"

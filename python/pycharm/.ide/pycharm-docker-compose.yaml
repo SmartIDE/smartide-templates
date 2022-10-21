@@ -1,0 +1,20 @@
+
+version: "3"
+services:
+  smartide-pycharm-python-dev:
+    image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-python-v2-jetbrains-pycharm:latest
+    hostname: dev-container
+    restart: always
+    environment:
+      LOCAL_USER_PASSWORD: root123       
+    volumes:
+      - .:/home/project
+    ports:
+      - 6822:22
+      - 6800:8887
+    networks:
+      - smartide-network  
+
+networks:
+  smartide-network:
+    external: true

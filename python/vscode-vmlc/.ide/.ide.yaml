@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-vscode-python-dev
+    service-name: smartide-vmlc-vscode-python-dev
 
     ports:
       tools-webide-vscode: 6800
@@ -18,5 +18,5 @@ workspace:
       - code --install-extension ms-python.python
 
 
-  kube-deploy-files: "vscode-k8s-deployment.yaml" 
-  docker-compose-file: "vscode-docker-compose.yaml"
+  kube-deploy-files: "vscode-vmlc-k8s-deployment.yaml" 
+  docker-compose-file: "vscode-vmlc-docker-compose.yaml"

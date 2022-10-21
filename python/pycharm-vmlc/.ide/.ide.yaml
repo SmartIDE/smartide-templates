@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-pycharm-python-dev
+    service-name: smartide-pycharm-vmlc-python-dev
 
     ports:
       tools-webide-pycharm: 6800
@@ -17,5 +17,5 @@ workspace:
     command:
       - npm config get registry
 
-  kube-deploy-files: "pycharm-k8s-deployment.yaml" 
-  docker-compose-file: "pycharm-docker-compose.yaml"
+  kube-deploy-files: "pycharm-vmlc-k8s-deployment.yaml" 
+  docker-compose-file: "pycharm-vmlc-docker-compose.yaml"

@@ -1,0 +1,72 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smartide-vscode-cpp-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      smartide-vscode.service: smartide-vscode-cpp
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        smartide-vscode.service: smartide-vscode-cpp
+    spec:
+      containers:
+        - env:
+            - name: LOCAL_USER_PASSWORD
+              value: root123
+          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-cpp-v2-vscode:latest
+          imagePullPolicy: Always
+          name: smartide-vscode-cpp-dev
+          ports:
+            - containerPort: 3000
+            - containerPort: 22
+            
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: smartide-vscode-cpp-service
+spec:
+  ports:   
+    - name: "6800"
+      port: 6800
+      targetPort: 3000
+    - name: "6822"
+      port: 6822
+      targetPort: 22
+  selector:
+    smartide-vscode.service: smartide-vscode-cpp
+status:
+  loadBalancer: {}
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: smartide-vscode-cpp-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              smartide-vscode-cpp/smartide-network: "true"
+  podSelector:
+    matchLabels:
+      smartide-vscode-cpp/smartide-network: "true"

@@ -1,0 +1,68 @@
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smartide-cpp-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      smartide-cpp.service: smartide-cpp
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        smartide-cpp.service: smartide-cpp
+    spec:
+      containers:
+        - env:
+            - name: LOCAL_USER_PASSWORD
+              value: root123           
+          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-cpp-v2:latest
+          imagePullPolicy: Always
+          name: smartide-cpp-dev
+          ports:
+            - containerPort: 22
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: smartide-cpp-service
+spec:
+  ports:    
+    - name: "6822"
+      port: 6822
+      targetPort: 22
+  selector:
+    smartide-cpp.service: smartide-cpp
+status:
+  loadBalancer: {}
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: smartide-cpp-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              smartide-cpp/smartide-network: "true"
+  podSelector:
+    matchLabels:
+      smartide-cpp/smartide-network: "true"

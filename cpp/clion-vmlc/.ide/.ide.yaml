@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-clion-cpp-dev
+    service-name: smartide-clion-vmlc-cpp-dev
 
     ports:
       tools-webide-clion: 6800
@@ -17,5 +17,5 @@ workspace:
     command:
       - npm config get registry
 
-  kube-deploy-files: "clion-k8s-deployment.yaml" 
-  docker-compose-file: "clion-docker-compose.yaml"
+  kube-deploy-files: "clion-vmlc-k8s-deployment.yaml" 
+  docker-compose-file: "clion-vmlc-docker-compose.yaml"

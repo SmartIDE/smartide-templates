@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-vscode-cpp-dev
+    service-name: smartide-vmlc-vscode-cpp-dev
 
     ports:
       tools-webide-vscode: 6800
@@ -18,5 +18,5 @@ workspace:
       - dir
 
 
-  kube-deploy-files: "vscode-k8s-deployment.yaml" 
-  docker-compose-file: "vscode-docker-compose.yaml"
+  kube-deploy-files: "vscode-vmlc-k8s-deployment.yaml" 
+  docker-compose-file: "vscode-vmlc-docker-compose.yaml"

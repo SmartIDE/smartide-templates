@@ -1,0 +1,72 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smartide-clion-cpp-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      smartide-cpp.service: smartide-clion-cpp
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        smartide-cpp.service: smartide-clion-cpp
+    spec:
+      containers:
+        - env:
+            - name: LOCAL_USER_PASSWORD
+              value: root123
+          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-cpp-v2-jetbrains-clion:latest
+          imagePullPolicy: Always
+          name: smartide-clion-cpp-dev
+          ports:
+            - containerPort: 8887
+            - containerPort: 22
+            
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "2000m"
+            limits:
+              memory: "2Gi"
+              cpu: "2000m"
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: smartide-clion-cpp-service
+spec:
+  ports:   
+    - name: "6800"
+      port: 6800
+      targetPort: 8887
+    - name: "6822"
+      port: 6822
+      targetPort: 22
+  selector:
+    smartide-cpp.service: smartide-clion-cpp
+status:
+  loadBalancer: {}
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: smartide-clion-cpp-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              smartide-clion-cpp/smartide-network: "true"
+  podSelector:
+    matchLabels:
+      smartide-clion-cpp/smartide-network: "true"

@@ -1,0 +1,72 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smartide-phpstorm-php-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      smartide-php.service: smartide-phpstorm-php
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        smartide-php.service: smartide-phpstorm-php
+    spec:
+      containers:
+        - env:
+            - name: LOCAL_USER_PASSWORD
+              value: root123
+          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-php-v2-jetbrains-phpstorm:latest
+          imagePullPolicy: Always
+          name: smartide-phpstorm-php-dev
+          ports:
+            - containerPort: 8887
+            - containerPort: 22
+            
+          resources:
+            requests:
+              memory: "2Gi"
+              cpu: "2000m"
+            limits:
+              memory: "2Gi"
+              cpu: "2000m"
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: smartide-phpstorm-php-service
+spec:
+  ports:   
+    - name: "6800"
+      port: 6800
+      targetPort: 8887
+    - name: "6822"
+      port: 6822
+      targetPort: 22
+  selector:
+    smartide-php.service: smartide-phpstorm-php
+status:
+  loadBalancer: {}
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: smartide-phpstorm-php-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              smartide-phpstorm-php/smartide-network: "true"
+  podSelector:
+    matchLabels:
+      smartide-phpstorm-php/smartide-network: "true"

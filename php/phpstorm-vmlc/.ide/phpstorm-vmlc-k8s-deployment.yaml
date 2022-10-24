@@ -1,0 +1,66 @@
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: smartide-phpstorm-vmlc-php-dev
+  annotations:
+    io.kubernetes.cri-o.userns-mode: "auto:size=65536"
+  labels:
+    smartide-php.service: smartide-phpstorm-vmlc-php
+spec:
+  runtimeClassName: sysbox-runc
+  containers:
+    - env:
+        - name: LOCAL_USER_PASSWORD
+          value: root123     
+      name: smartide-phpstorm-vmlc-php-dev
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-php-v2-jetbrains-phpstorm-vmlc:latest
+      command: ["/sbin/init"]
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 22
+        - containerPort: 8887
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "2000m"
+        limits:
+          memory: "2Gi"
+          cpu: "2000m"
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: smartide-phpstorm-vmlc-php-service
+spec:
+  ports:   
+    - name: "6800"
+      port: 6800
+      targetPort: 8887
+    - name: "6822"
+      port: 6822
+      targetPort: 22
+  selector:
+    smartide-php.service: smartide-phpstorm-vmlc-php
+status:
+  loadBalancer: {}
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: smartide-phpstorm-vmlc-php-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              smartide-phpstorm-vmlc-php/smartide-network: "true"
+  podSelector:
+    matchLabels:
+      smartide-phpstorm-vmlc-php/smartide-network: "true"

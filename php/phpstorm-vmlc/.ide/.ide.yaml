@@ -4,7 +4,7 @@ orchestrator:
   version: 3
 workspace:
   dev-container:
-    service-name: smartide-phpstorm-php-dev
+    service-name: smartide-phpstorm-vmlc-php-dev
 
     ports:
       tools-webide-phpstorm: 6800
@@ -17,5 +17,5 @@ workspace:
     command:
       - npm config get registry
 
-  kube-deploy-files: "phpstorm-k8s-deployment.yaml" 
-  docker-compose-file: "phpstorm-docker-compose.yaml"
+  kube-deploy-files: "phpstorm-vmlc-k8s-deployment.yaml" 
+  docker-compose-file: "phpstorm-vmlc-docker-compose.yaml"

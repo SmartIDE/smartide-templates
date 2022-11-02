@@ -1,0 +1,22 @@
+version: smartide/v0.3
+orchestrator:
+  type: allinone
+  version: 3
+workspace:
+  dev-container:
+    service-name: smartide-vmlc-vscode-allinone-dev
+
+    ports:
+      tools-webide-vscode: 6800
+      tools-ssh: 6822
+    ide-type: vscode
+
+    volumes: 
+      git-config: true
+      ssh-key: true
+    command:
+      - code --install-extension vscjava.vscode-java-pack
+      - code --install-extension pivotal.vscode-boot-dev-pack
+
+  kube-deploy-files: "vscode-vmlc-k8s-deployment.yaml" 
+  docker-compose-file: "vscode-vmlc-docker-compose.yaml"

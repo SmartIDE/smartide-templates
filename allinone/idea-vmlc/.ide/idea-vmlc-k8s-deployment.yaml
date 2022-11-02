@@ -1,0 +1,66 @@
+---
+
+apiVersion: v1
+kind: Pod
+metadata:
+  name: smartide-idea-vmlc-allinone-dev
+  annotations:
+    io.kubernetes.cri-o.userns-mode: "auto:size=65536"
+  labels:
+    smartide-allinone.service: smartide-idea-vmlc-allinone
+spec:
+  runtimeClassName: sysbox-runc
+  containers:
+    - env:
+        - name: LOCAL_USER_PASSWORD
+          value: root123     
+      name: smartide-idea-vmlc-allinone-dev
+      image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-allinone-v2-jetbrains-idea-vmlc:latest
+      command: ["/sbin/init"]
+      imagePullPolicy: Always
+      ports:
+        - containerPort: 22
+        - containerPort: 8887
+      resources:
+        requests:
+          memory: "2Gi"
+          cpu: "2000m"
+        limits:
+          memory: "2Gi"
+          cpu: "2000m"
+
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: smartide-idea-vmlc-allinone-service
+spec:
+  ports:   
+    - name: "6800"
+      port: 6800
+      targetPort: 8887
+    - name: "6822"
+      port: 6822
+      targetPort: 22
+  selector:
+    smartide-allinone.service: smartide-idea-vmlc-allinone
+status:
+  loadBalancer: {}
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: smartide-idea-vmlc-allinone-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              smartide-idea-vmlc-allinone/smartide-network: "true"
+  podSelector:
+    matchLabels:
+      smartide-idea-vmlc-allinone/smartide-network: "true"

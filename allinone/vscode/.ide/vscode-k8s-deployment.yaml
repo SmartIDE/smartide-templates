@@ -1,0 +1,72 @@
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: smartide-vscode-allinone-dev
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      smartide-allinone.service: smartide-vscode-allinone
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        smartide-allinone.service: smartide-vscode-allinone
+    spec:
+      containers:
+        - env:
+            - name: LOCAL_USER_PASSWORD
+              value: root123
+          image: registry.cn-hangzhou.aliyuncs.com/smartide/smartide-allinone-v2-vscode:latest
+          imagePullPolicy: Always
+          name: smartide-vscode-allinone-dev
+          ports:
+            - containerPort: 3000
+            - containerPort: 22
+            
+          resources:
+            requests:
+              memory: "1Gi"
+              cpu: "500m"
+            limits:
+              memory: "1Gi"
+              cpu: "500m"
+status: {}
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: smartide-vscode-allinone-service
+spec:
+  ports:   
+    - name: "6800"
+      port: 6800
+      targetPort: 3000
+    - name: "6822"
+      port: 6822
+      targetPort: 22
+  selector:
+    smartide-allinone.service: smartide-vscode-allinone
+status:
+  loadBalancer: {}
+
+---
+
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  name: smartide-vscode-allinone-network
+spec:
+  ingress:
+    - from:
+        - podSelector:
+            matchLabels:
+              smartide-vscode-allinone/smartide-network: "true"
+  podSelector:
+    matchLabels:
+      smartide-vscode-allinone/smartide-network: "true"

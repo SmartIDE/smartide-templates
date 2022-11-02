@@ -24,12 +24,48 @@
     "command": []
   },
   {
+    "typename": "allinone",
+    "subtype": [
+      {
+        "name": "vmlc",
+        "title": "基于VMLC的allinone环境",
+        "desc": "使用基于VMLC的allinone环境SDK",
+        "logo": ""
+      },
+      {
+        "name": "vscode",
+        "title": "基于VSCode的allinone环境",
+        "desc": "使用allinone环境创建VSCode IDE",
+        "logo": ""
+      },
+      {
+        "name": "vscode-vmlc",
+        "title": "基于VMLC的VSCode的allinone环境",
+        "desc": "使用基于VMLC的allinone环境创建VSCode IDE",
+        "logo": ""
+      },
+      {
+        "name": "idea",
+        "title": "基于IDEA的allinone环境",
+        "desc": "使用allinone环境创建IDEA IDE",
+        "logo": ""
+      },
+      {
+        "name": "idea-vmlc",
+        "title": "基于VMLC的IDEA的allinone环境",
+        "desc": "使用基于VMLC的allinone环境创建IDEA IDE",
+        "logo": ""
+      }
+    ],
+    "command": []
+  },
+  {
     "typename": "node",
     "subtype": [
       {
         "name": "vmlc",
         "title": "基于VMLC的node环境",
-        "desc": "使用基于VMLC的node环境创建IDE",
+        "desc": "使用基于VMLC的node环境SDK",
         "logo": ""
       },
       {
@@ -77,7 +113,7 @@
       {
         "name": "vmlc",
         "title": "基于VMLC的java环境",
-        "desc": "使用基于VMLC的java环境创建IDE",
+        "desc": "使用基于VMLC的java环境SDK",
         "logo": ""
       },
       {
@@ -113,7 +149,7 @@
       {
         "name": "vmlc",
         "title": "基于VMLC的dotnet环境",
-        "desc": "使用基于VMLC的dotnet环境创建IDE",
+        "desc": "使用基于VMLC的dotnet环境SDK",
         "logo": ""
       },
       {
@@ -185,7 +221,7 @@
       {
         "name": "vmlc",
         "title": "基于VMLC的golang环境",
-        "desc": "使用基于VMLC的golang环境创建IDE",
+        "desc": "使用基于VMLC的golang环境SDK",
         "logo": ""
       },
       {

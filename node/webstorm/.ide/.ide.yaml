@@ -7,7 +7,7 @@ workspace:
     service-name: smartide-webstorm-node-dev
 
     ports:
-      tools-webide-webstrom: 6800
+      tools-webide-webstorm: 6800
       tools-ssh: 6822
     ide-type: jb-projector
 
